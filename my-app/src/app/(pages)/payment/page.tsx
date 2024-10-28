@@ -2,6 +2,7 @@
 import './payment.css';
 import '../register/register.css';
 import { useState } from 'react';
+import Image from 'next/image';
 import Footer from '@/app/components/Footer/Footer';
 
 export default function Payment() {
@@ -26,7 +27,7 @@ export default function Payment() {
           <div className="payment-section">
             <div className="qr-code-container">
               {/* Replace with actual QR code image */}
-              <img 
+              <Image 
                 src="/payment-qr.png" 
                 alt="Payment QR Code" 
                 className="qr-code"
