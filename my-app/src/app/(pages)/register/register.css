@@ -1,8 +1,12 @@
 .register-component {
-  min-height: 100vh;
+  width: 100%;
   background: linear-gradient(135deg, #000000, #1a1a1a);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .register-component::before {
   content: '';
@@ -17,7 +21,7 @@
 .register-component-content {
   position: relative;
   z-index: 2;
-  max-width: 800px;
+  width: 60%;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -138,8 +142,6 @@
   transform: translateY(-2px);
   box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
-
-/* File input styling */
 input[type="file"] {
   padding: 0.5rem;
   border: 2px dashed #444;
@@ -151,9 +153,8 @@ input[type="file"] {
 input[type="file"]:hover {
   border-color: #FFD700;
 }
-
-/* Footer positioning */
 .register-component-footer {
+  width: 100%;
   position: relative;
   z-index: 2;
   margin-top: 2rem;
@@ -188,76 +189,6 @@ select option {
   background: #FFC800;
 }
 /*----------------------------------------------------------confimationPage---------------------------------------*/
-.profile-box {
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  margin: 20px 0;
-}
-
-.profile-details {
-  margin-bottom: 24px;
-}
-
-.detail-item {
-  display: flex;
-  margin-bottom: 12px;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
-}
-
-.detail-label {
-  font-weight: 600;
-  width: 150px;
-  color: #FFD700;
-}
-
-.detail-value {
-  flex: 1;
-  color: #fff;
-}
-
-.action-buttons {
-  display: flex;
-  gap: 16px;
-  justify-content: flex-end;
-}
-
-.edit-btn, .confirm-btn {
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.edit-btn {
-  background: transparent;
-  border: 2px solid #FFD700;
-  color: #FFD700;
-}
-
-.confirm-btn {
-  background: #FFD700;
-  color: #000;
-}
-
-.edit-btn:hover {
-  background: rgba(255, 215, 0, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-}
-
-.confirm-btn:hover {
-  background: #FFC800;
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-}
-
 /*--------------------------------------------------------paymentPage-------------------------------------------------*/
 .payment-section {
   max-width: 600px;
@@ -326,4 +257,150 @@ select option {
 
 .payment-verification-form input::placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  .register-component-content {
+    width: 90%;
+    padding: 1rem;
+  }
+
+  .register-component-content-in {
+    padding: 1.5rem;
+  }
+
+  .register-component-content-in-heading h1 {
+    font-size: 1.5rem;
+  }
+
+  .event-buttons {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .event-btn {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .select-all-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  /* Confirmation Page Mobile Styles */
+  .profile-box {
+    padding: 16px;
+  }
+
+  .detail-item {
+    flex-direction: column;
+    padding: 6px 0;
+  }
+
+  .detail-label {
+    width: 100%;
+    margin-bottom: 4px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .edit-btn, .confirm-btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* Payment Page Mobile Styles */
+  .payment-section {
+    padding: 0 1rem;
+  }
+
+  .qr-code {
+    max-width: 200px;
+  }
+
+  .payment-instructions {
+    font-size: 1em;
+  }
+
+  .payment-verification-form {
+    padding: 16px;
+  }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 480px) {
+  .register-component-content {
+    width: 95%;
+    padding: 0.5rem;
+  }
+
+  .register-component-content-in {
+    padding: 1rem;
+  }
+
+  .register-component-content-in-heading h1 {
+    font-size: 1.25rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .event-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .submit-btn {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  /* Confirmation Page Extra Small Device Styles */
+  .profile-box {
+    padding: 12px;
+    margin: 10px 0;
+  }
+
+  .detail-item {
+    margin-bottom: 8px;
+  }
+
+  /* Payment Page Extra Small Device Styles */
+  .qr-code {
+    max-width: 150px;
+  }
+
+  .payment-verification-form input {
+    padding: 8px;
+  }
+}
+
+/* Landscape Mode Fixes */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .register-component {
+    min-height: 100vh;
+  }
+
+  .register-component-content {
+    padding: 1rem 0;
+  }
+
+  .event-buttons {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .profile-box {
+    margin: 10px 0;
+  }
 }

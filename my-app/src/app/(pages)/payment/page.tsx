@@ -1,6 +1,7 @@
 'use client';
+import './payment.css';
+import '../register/register.css';
 import { useState } from 'react';
-import '../register.css';
 import Footer from '@/app/components/Footer/Footer';
 
 export default function Payment() {
@@ -12,7 +13,6 @@ export default function Payment() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle payment verification logic here
   };
 
   return (

@@ -1,6 +1,7 @@
 'use client';
+import './confirm.css';
+import '../register/register.css';
 import { useRouter } from 'next/navigation';
-import '../register.css';
 import Footer from '@/app/components/Footer/Footer';
 
 interface StudentDetails {
