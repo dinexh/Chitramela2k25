@@ -25,7 +25,6 @@ export default function Payment() {
 
           <div className="payment-section">
             <div className="qr-code-container">
-              {/* Replace with actual QR code image */}
               <img 
                 src="/payment-qr.png" 
                 alt="Payment QR Code" 
