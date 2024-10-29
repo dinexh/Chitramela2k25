@@ -27,11 +27,19 @@ export default function Navigation() {
   }, [])
 
   const handleNavClick = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth' });
+  
+      // After smooth scrolling, adjust the scroll position with a delay
+      setTimeout(() => {
+        const yOffset = -80; 
+        const yPosition = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: yPosition, behavior: 'smooth' });
+      }, 100); 
     }
-  }
+  };
+  
 
   return (
     <nav className={`navigation ${isVisible ? 'visible' : ''}`}>

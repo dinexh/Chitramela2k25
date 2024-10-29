@@ -45,7 +45,8 @@
 .footer-in-copyright {
   text-align: center;
   color: #fff;
-  padding-top: 1.5rem;
+  /* padding-top: 1rem; */
+
 }
 .footer-in-copyright p {
   margin: 0.5rem 0;

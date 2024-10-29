@@ -1,14 +1,33 @@
 .TeamPage-Container{
-    width: 90%;
+    width: 100%;
+    
 }
 .TeamPage-Container-in{
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
 
-.Team-two{
+.Team-one{
     width: 100%;
+}
+
+.Team-one-in{
+    width: 100%;
+    text-align: center;
+    background-color: #0a0a0a;
+    color: yellow;
+    text-decoration: underline;
+    padding: 1%;
+    font-size: 1.5rem;
+}
+
+
+.Team-two{
+    background-color: #0a0a0a;
+    color: white;
+    width: 100%;
+    padding: 3% 0 5% 0;
 }
 
 .Team-three{
@@ -43,12 +62,13 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    padding-bottom: 3%;
 }
 
-img{
+/* Image{
     width: 20rem;
     height: 20rem;
-}
+} */
 
 .Team-two-in-three{
     width: 100%;
@@ -75,4 +95,11 @@ img{
     justify-content: center;
     flex-direction: column;
     align-items: center;
+}
+
+.description p{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
 }

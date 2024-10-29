@@ -11,6 +11,11 @@ const Footer = () => {
         <div className="footer-in-one">
           <Image src={Logo} alt="Company Logo" />
         </div>
+        <div className="footer-in-copyright">
+          <p>Copyright &copy; 2024 Chitramela. All rights reserved.</p>
+          <p>Designed and Developed by</p> <p><Link href="www.amazon.in">Dinesh Korukonda</Link> & <Link href="www.amazon.in">Pavan Karthik Garaga</Link> of <Link href="www.amazon.in"> <span>ZeroOne Code Club</span></Link>
+        </p>
+      </div>
         <div className="footer-in-two">
           <Link href="#" className="footer-social-link" aria-label="Facebook" rel="noopener noreferrer">
             <FaFacebookF />
@@ -29,11 +34,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <div className="footer-in-copyright">
-        <p>Copyright &copy; 2024 Chitramela. All rights reserved.</p>
-        <p>Designed and Developed by <Link href="www.amazon.in">Dinesh Korukonda</Link> & <Link href="www.amazon.in">Pavan Karthik garaga</Link> of <Link href="www.amazon.in"> <span>ZeroOne Code Club</span></Link>
-        </p>
-      </div>
+      
     </footer>
   );
 }
