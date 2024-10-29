@@ -17,6 +17,7 @@ export default function Home() {
   const activitiesRef = useRef<HTMLDivElement>(null)
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [selectedAboutInfo, setSelectedAboutInfo] = useState<number | null>(null);
+  const [showNav, setShowNav] = useState(false);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -50,6 +51,21 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('.home-component-hero');
+      if (heroSection) {
+        const heroHeight = heroSection.clientHeight;
+        const scrollPosition = window.scrollY;
+        
+        setShowNav(scrollPosition > heroHeight / 2);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index)
   }
@@ -66,16 +82,16 @@ export default function Home() {
 
   return (
     <div className="home-component">
-      <div className="home-component-nav">
+      <div className={`home-component-nav ${showNav ? 'visible' : ''}`}>
         <Navigation />
       </div>
 
-      <div className="home-component-hero">
+      <div className="home-component-hero" id="hero">
         <video ref={videoRef} autoPlay loop muted playsInline>
-          <source src="/assets/HeroVideo.mp4" type="video/mp4" />
+            <source src="/HeroVideo.mp4" type="video/mp4" />
         </video>
       </div>
-
+{/*---------------------------------------- home-component-sections ----------------------------------------*/}
       <div className="home-component-sections">
         <div className="home-component-sections-in">
           {/*---------------------------------------- home counter section ----------------------------------------*/}
