@@ -2,6 +2,15 @@ import Navigation from '@/app/components/Navigation/Navigation';
 import Footer from '@/app/components/Footer/Footer';
 import Image from 'next/image';
 import './Team.css';
+import type { Metadata } from "next";
+
+// SEO-specific metadata for the team page
+export const metadata: Metadata = {
+  title: "Chitramela 2025 - Meet the Team",
+  description: "Get to know the organizers, artists, and visionaries behind Chitramela 2025. Meet our team!",
+  keywords: "Chitramela team, organizers, artists, festival leaders",
+}
+
 
 const teamMembers = [
   {

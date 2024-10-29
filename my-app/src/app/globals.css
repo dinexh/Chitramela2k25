@@ -647,19 +647,15 @@
   font-size: 2rem;
   font-weight: 700;
 }
-
+/* ---------------------------------------- Scroll Behavior ---------------------------------------- */
 html {
   scroll-behavior: smooth;
 }
-
-/* If you want to support Safari and other browsers that don't support scroll-behavior */
 @media screen and (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
   }
 }
-
-/* Add these animation classes */
 .animate-in {
   animation: fadeInUp 0.8s ease forwards;
 }
@@ -693,4 +689,182 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #FFC800;
+}
+
+/* ---------------------------------------- Media Queries ---------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  /* Hero Section */
+  .home-component-hero {
+    height: 60vh;
+  }
+
+  /* Counter Section */
+  .home-component-counter-content {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .home-component-counter-item {
+    min-width: 140px;
+  }
+
+  .home-component-counter-card {
+    padding: 1.5rem;
+  }
+
+  .home-component-counter-value {
+    font-size: 2.5rem;
+  }
+
+  .home-component-counter-unit {
+    font-size: 1rem;
+  }
+
+  /* Events Section */
+  .home-component-event-card {
+    width: calc(100% - 2rem);
+  }
+
+  .home-component-event-card-title {
+    font-size: 1.2rem;
+  }
+
+  .home-component-event-card-button {
+    padding: 0.6rem 1.2rem;
+  }
+
+  /* Gallery Section */
+  .home-component-gallery {
+    padding: 2rem 1rem;
+  }
+
+  .home-component-gallery-image-wrapper {
+    width: 80vw;
+    height: 30vh;
+  }
+
+  /* FAQ Section */
+  .home-component-faq {
+    padding: 2rem 1rem;
+  }
+
+  .home-component-faq-item {
+    width: 90%;
+  }
+
+  .home-component-faq-question {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  /* About Section */
+  .home-component-about {
+    padding: 2rem 1rem;
+  }
+
+  .home-component-about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-component-about-card {
+    padding: 1.5rem;
+  }
+
+  .about-card-icon {
+    font-size: 2.5rem;
+  }
+
+  /* About Info Section */
+  .home-component-about-info {
+    padding: 2rem 1rem;
+  }
+
+  .home-component-about-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Global Headings */
+  .home-component-counter-heading h2,
+  .home-component-about-info-heading h2,
+  .home-component-events-heading h2,
+  .home-component-gallery-heading h2,
+  .home-component-faq-heading h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  /* Counter Section */
+  .home-component-counter-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-component-counter-item {
+    width: 100%;
+    min-width: unset;
+  }
+
+  /* Gallery Section */
+  .home-component-gallery-image-wrapper {
+    width: 90vw;
+    height: 25vh;
+  }
+
+  /* FAQ Section */
+  .home-component-faq-item {
+    width: 100%;
+  }
+
+  /* Modal Content */
+  .home-component-modal-content {
+    padding: 1rem;
+  }
+
+  .home-component-modal-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .modal-about-content {
+    padding: 1rem;
+  }
+
+  .modal-about-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .home-component-hero {
+    height: 100vh;
+  }
+
+  .home-component-gallery-image-wrapper {
+    height: 50vh;
+  }
+
+  .home-component-counter-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* Tablet devices */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .home-component-event-card {
+    width: calc(50% - 2rem);
+  }
+
+  .home-component-gallery-image-wrapper {
+    width: 60vw;
+    height: 35vh;
+  }
+
+  .home-component-about-grid,
+  .home-component-about-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

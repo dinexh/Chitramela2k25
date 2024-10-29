@@ -7,14 +7,13 @@ import logo from '../../assets/logo.png';
 
 export default function Navigation() {
   const [isVisible, setIsVisible] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get the hero section height (assuming it has an id of 'hero')
       const heroSection = document.getElementById('hero')
       const heroHeight = heroSection?.offsetHeight || 0
 
-      // Show navigation when scrolled past hero section
       if (window.scrollY > heroHeight - 100) {
         setIsVisible(true)
       } else {
@@ -31,6 +30,7 @@ export default function Navigation() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
+    setIsMobileMenuOpen(false) // Close mobile menu after clicking
   }
 
   return (
@@ -41,7 +41,20 @@ export default function Navigation() {
             <Image src={logo} alt="Chitramela Logo" />
           </Link>
         </div>
-        <div className="nav-in-two">
+
+        {/* Hamburger Menu Button */}
+        <button 
+          className={`hamburger ${isMobileMenuOpen ? 'active' : ''}`}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* Navigation Links */}
+        <div className={`nav-in-two ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
           <Link 
             href="#about-info" 
             onClick={() => handleNavClick('about-info')}
