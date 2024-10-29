@@ -8,13 +8,13 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-in">
-        <div className="footer-in-one">
-          <Image src={Logo} alt="Company Logo" />
-        </div>
         <div className="footer-in-contact">
           <p>Designed and Developed by</p> 
           <p><Link href="www.amazon.in">Dinesh Korukonda</Link> & <Link href="www.amazon.in">Pavan Karthik Garaga</Link> of <Link href="www.amazon.in"> <span>ZeroOne Code Club</span></Link></p>
           <p>Copyright &copy; 2024 Chitramela. All rights reserved.</p>
+        </div>
+        <div className="footer-in-one">
+          <Image src={Logo} alt="Company Logo" width={400} height={100} />
         </div>
         <div className="footer-in-two">
           <div className="footer-in-two-in">
@@ -35,7 +35,7 @@ const Footer = () => {
               </Link> */}
           </div>
           <div className="contact-in">
-              <h2>Contact Us</h2>
+              <h2>Contact</h2>
               <p>
                 <Link href="tel:+911234567890" legacyBehavior>
                   <a target="_blank" rel="noopener noreferrer">+91 1234567890 {`{Amish Kumar}`}</a>

@@ -57,7 +57,7 @@ const Team = () => {
                       <div className="description">
                         <p>{member.name}</p>
                         <p>{member.designation}</p>
-                        <p className='social'>Contact: <Link href={member.instagram} legacyBehavior ><a className='media'><FaInstagram/></a></Link></p>
+                        <p className='social'>Contact: <Link href={member.instagram} legacyBehavior ><a className='media'><FaInstagram fontSize={20}/></a></Link></p>
                       </div>
                     </div>
                     

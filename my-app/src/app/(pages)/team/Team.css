@@ -75,11 +75,15 @@
 }
 
 .Team-two-in-three-in{
-    width: 100%;
+    margin: 0 auto;
+    width: 80%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    /* gap:10%; */
+    row-gap: 1rem;
+    column-gap: 1%;
 }
 
 .Team-two-in-one-in,.Team-two-in-two-in-one,.Team-two-in-three-in-one{
@@ -88,10 +92,9 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-/* .Team-two-in-three-in {
-    
-} */
-
+.Team-two-in-three-in-one{
+    margin: 0 1rem;
+}
 
 .description{
     font-size: 1rem;
@@ -104,12 +107,13 @@
 
 .description p{
     display: flex;
-    gap: 1rem;
+    gap: .5rem;
     align-items: center;
     justify-content: center;
 }
 
 .media{
+    margin-top: .4rem;
     color: white;
     font-size: 1rem;
 }
@@ -120,7 +124,87 @@
 
 .social{
     display: flex;
-    gap: 1rem;
+    /* gap: 1rem; */
     justify-content: center;
     align-items: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .Team-two-in-three-in {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .Team-two-in-three-in {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .Team-two-in-two-in {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Team-one h1 {
+    font-size: 2rem;
+  }
+
+  .Team-two-in-one-in Image,
+  .Team-two-in-two-in-one Image,
+  .Team-two-in-three-in-one Image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .description p {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .Team-two-in-three-in {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .Team-one h1 {
+    font-size: 1.75rem;
+  }
+
+  .Team-two-in-one-in Image,
+  .Team-two-in-two-in-one Image,
+  .Team-two-in-three-in-one Image {
+    width: 180px;
+    height: 180px;
+  }
+
+  .Team-two-in {
+    padding: 1rem;
+  }
+
+  .description {
+    padding: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Team-one h1 {
+    font-size: 1.5rem;
+  }
+
+  .Team-two-in-one-in Image,
+  .Team-two-in-two-in-one Image,
+  .Team-two-in-three-in-one Image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .description p {
+    font-size: 0.8rem;
+  }
 }
