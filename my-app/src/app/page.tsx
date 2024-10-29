@@ -101,7 +101,7 @@ export default function Home() {
       <div className="home-component-sections">
         <div className="home-component-sections-in">
           {/*---------------------------------------- home counter section ----------------------------------------*/}
-          <section className="home-component-counter scroll-hidden" ref={counterRef}>
+          <div className="home-component-counter scroll-hidden" ref={counterRef}>
             <div className="home-component-counter-heading">  
               <h2>Event Starts In:</h2>
             </div>
@@ -115,7 +115,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </section>
+          </div>
           {/*---------------------------------------- about info section ----------------------------------------*/}
           <div className="home-component-about-info scroll-hidden" ref={aboutRef} id="about-info">
             <div className="home-component-about-info-heading">
