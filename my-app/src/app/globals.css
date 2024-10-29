@@ -314,7 +314,7 @@
   border-radius: 15px;
   overflow: hidden;
   position: relative;
-  height: 400px;
+  height: 425px;
   transition: all 0.4s ease;
 }
 .home-component-event-card:hover {
@@ -354,8 +354,8 @@
 .home-component-event-card-button {
   background: transparent;
   border: 2px solid #FFD700;
-  color: #ffffff;
-  background-color: #ffd90071;
+  color: #000000;
+  background-color: #ffd700;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
   font-weight: 800;

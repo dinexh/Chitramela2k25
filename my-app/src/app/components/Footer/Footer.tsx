@@ -12,10 +12,10 @@ const Footer = () => {
           <Image src={Logo} alt="Company Logo" />
         </div>
         <div className="footer-in-contact">
-        <p>Designed and Developed by</p> 
-        <p><Link href="www.amazon.in">Dinesh Korukonda</Link> & <Link href="www.amazon.in">Pavan Karthik Garaga</Link> of <Link href="www.amazon.in"> <span>ZeroOne Code Club</span></Link></p>
-        <p>Copyright &copy; 2024 Chitramela. All rights reserved.</p>
-      </div>
+          <p>Designed and Developed by</p> 
+          <p><Link href="www.amazon.in">Dinesh Korukonda</Link> & <Link href="www.amazon.in">Pavan Karthik Garaga</Link> of <Link href="www.amazon.in"> <span>ZeroOne Code Club</span></Link></p>
+          <p>Copyright &copy; 2024 Chitramela. All rights reserved.</p>
+        </div>
         <div className="footer-in-two">
           <div className="footer-in-two-in">
             <Link href="#" className="footer-social-link" aria-label="Facebook" rel="noopener noreferrer">
