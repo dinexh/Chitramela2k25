@@ -154,7 +154,7 @@ export default function Home() {
                     <div className="home-component-event-card-image">
                       <Image  src={activity.image} alt={activity.title} 
                         width={600}
-                      height={400}
+                      height={600}
                         layout="responsive"
                       />
                     </div>

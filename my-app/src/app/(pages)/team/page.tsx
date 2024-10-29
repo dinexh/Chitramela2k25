@@ -53,7 +53,7 @@ const Team = () => {
                 {
                   teamMembers.map((member,index)=>(
                     <div key={index} className="Team-two-in-three-in-one">
-                      <Image src={member.image} alt={member.designation} width={300} height={300}/>
+                      <Image src={member.image} alt={member.designation} width={250} height={250}/>
                       <div className="description">
                         <p>{member.name}</p>
                         <p>{member.designation}</p>
@@ -62,38 +62,6 @@ const Team = () => {
                     </div>
                     
                 ))}
-                {/* <div className="Team-two-in-three-in-one">
-                  <Image src={Pic} alt="Chief" width={300} height={300} />
-                  <div className="description">
-                    <p>Name</p>
-                    <p>Chief</p>
-                    <p>Contact : <FaInstagram/> </p>
-                  </div>
-                </div>
-                <div className="Team-two-in-three-in-one">
-                  <Image src={Pic} alt="Chief" width={300} height={300} />
-                  <div className="description">
-                    <p>Name</p>
-                    <p>Chief</p>
-                    <p>Contact : <FaInstagram/> </p>
-                  </div>
-                </div>
-                <div className="Team-two-in-three-in-one">
-                  <Image src={Pic} alt="Chief" width={300} height={300} />
-                  <div className="description">
-                    <p>Name</p>
-                    <p>Chief</p>
-                    <p>Contact : <FaInstagram/> </p>
-                  </div>
-                </div>
-                <div className="Team-two-in-three-in-one">
-                  <Image src={Pic} alt="Chief" width={300} height={300} />
-                  <div className="description">
-                    <p>Name</p>
-                    <p>Chief</p>
-                    <p>Contact : <FaInstagram/> </p>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
