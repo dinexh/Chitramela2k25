@@ -26,9 +26,16 @@ export default function Navigation() {
   }, [])
 
   const handleNavClick = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth' });
+  
+      // After smooth scrolling, adjust the scroll position with a delay
+      setTimeout(() => {
+        const yOffset = -80; 
+        const yPosition = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: yPosition, behavior: 'smooth' });
+      }, 100); 
     }
     setIsMobileMenuOpen(false) // Close mobile menu after clicking
   }
@@ -84,7 +91,7 @@ export default function Navigation() {
             FAQ
           </Link>
           <Link href="/team" className="navigation-link">Team</Link>
-          <Link href="/register" className="navigation-link">Register</Link>
+          <Link href="/register" className="navigation-link register">Register</Link>
         </div>
       </div>
     </nav>

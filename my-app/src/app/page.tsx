@@ -32,7 +32,7 @@ export default function Home() {
       videoRef.current.play()
     }
 
-    const targetDate = new Date('2025-01-10T00:00:00')
+    const targetDate = new Date('2025-01-04T00:00:00')
     const interval = setInterval(() => {
       const now = new Date()
       const difference = targetDate.getTime() - now.getTime()
@@ -159,7 +159,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="home-component-event-card-overlay">
-                      <h3 className="home-component-event-card-title">{activity.title}</h3>
+                      {/* <h3 className="home-component-event-card-title">{activity.title}</h3> */}
                       <button className="home-component-event-card-button" onClick={() => setSelectedActivity(activity)}>
                         Read More
                       </button>

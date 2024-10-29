@@ -1,1 +1,105 @@
- 
+.TeamPage-Container{
+    width: 100%;
+    
+}
+.TeamPage-Container-in{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.Team-one{
+    width: 100%;
+}
+
+.Team-one-in{
+    width: 100%;
+    text-align: center;
+    background-color: #0a0a0a;
+    color: yellow;
+    text-decoration: underline;
+    padding: 1%;
+    font-size: 1.5rem;
+}
+
+
+.Team-two{
+    background-color: #0a0a0a;
+    color: white;
+    width: 100%;
+    padding: 3% 0 5% 0;
+}
+
+.Team-three{
+    width: 100%;
+}
+
+.Team-two-in{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+
+.Team-two-in-one{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.Team-two-in-two{
+    width: 100%;
+}
+
+.Team-two-in-two-in{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 3%;
+}
+
+/* Image{
+    width: 20rem;
+    height: 20rem;
+} */
+
+.Team-two-in-three{
+    width: 100%;
+}
+
+.Team-two-in-three-in{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.Team-two-in-one-in,.Team-two-in-two-in-one,.Team-two-in-three-in-one{
+    border: 2px solid rgb(186, 210, 98);
+    border-radius: 2%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.description{
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description p{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}

@@ -140,3 +140,9 @@
     transform: rotate(-45deg);
   }
 }
+.register{
+  background-color: #ffd900c8;
+  padding: .5rem 1em;
+  border-radius: 1rem;
+  font-weight: 600;
+}
