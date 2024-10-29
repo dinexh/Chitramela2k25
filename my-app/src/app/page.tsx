@@ -230,7 +230,7 @@ export default function Home() {
             <div className="home-component-modal-image">
               <Image  src={selectedActivity.image} alt={selectedActivity.title} 
                 width={600}
-                height={400}
+                height={600}
                 layout="responsive"
               />
             </div>

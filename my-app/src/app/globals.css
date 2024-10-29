@@ -272,6 +272,10 @@
   padding: 1.5rem;
   background: rgba(0, 0, 0, 0.3);
 }
+.faq-arrow {
+  position: relative;
+  right: 0rem;
+}
 
 /* ---------------------------------------- Events Section Enhancement ---------------------------------------- */
 .home-component-events {

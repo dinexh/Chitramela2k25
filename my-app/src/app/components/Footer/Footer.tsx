@@ -10,7 +10,9 @@ const Footer = () => {
       <div className="footer-in">
         <div className="footer-in-contact">
           <p>Designed and Developed by</p> 
-          <p><Link href="www.amazon.in">Dinesh Korukonda</Link> & <Link href="www.amazon.in">Pavan Karthik Garaga</Link> of <Link href="www.amazon.in"> <span>ZeroOne Code Club</span></Link></p>
+          <p><Link href="www.amazon.in">Dinesh Korukonda</Link> & </p>
+          <p><Link href="www.amazon.in">Pavan Karthik Garaga</Link> of </p>
+          <p><Link href="www.amazon.in"> <span>ZeroOne Code Club</span></Link></p>
           <p>Copyright &copy; 2024 Chitramela. All rights reserved.</p>
         </div>
         <div className="footer-in-one">
