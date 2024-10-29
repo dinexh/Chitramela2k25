@@ -6,7 +6,6 @@ import Image from 'next/image';
 import logo from '../../assets/logo.png';
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -32,7 +31,6 @@ export default function Navigation() {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     }
-    setIsOpen(false)
   }
 
   return (

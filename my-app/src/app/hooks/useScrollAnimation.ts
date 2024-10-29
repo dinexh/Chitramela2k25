@@ -1,14 +1,18 @@
 import { useEffect, useRef } from 'react';
 
-export const useScrollAnimation = () => {
+export const useScrollAnimation = (resetOnExit = false) => {
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const currentElement = elementRef.current;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate-in');
+          } else if (resetOnExit) {
+            entry.target.classList.remove('animate-in');
           }
         });
       },
@@ -18,16 +22,16 @@ export const useScrollAnimation = () => {
       }
     );
 
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
+    if (currentElement) {
+      observer.observe(currentElement);
     }
 
     return () => {
-      if (elementRef.current) {
-        observer.unobserve(elementRef.current);
+      if (currentElement) {
+        observer.unobserve(currentElement);
       }
     };
-  }, []);
+  }, [resetOnExit]);
 
   return elementRef;
-}; 
+};
