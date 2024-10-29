@@ -656,3 +656,24 @@ html {
     scroll-behavior: smooth;
   }
 }
+
+/* Add these animation classes */
+.animate-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
