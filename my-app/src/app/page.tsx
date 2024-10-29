@@ -9,8 +9,7 @@ import { activities, Activity } from '@/app/data/activities';
 import { galleryImages } from '@/app/data/gallery';
 import { faqs, FAQ } from '@/app/data/faqs';
 import { aboutData } from '@/app/data/about';
-// custom hooks
-import { useScrollAnimation } from '@/app/hooks/useScrollAnimation';
+import { useScrollAnimation } from '@/app/components/useScrollAnimation';
 
 export default function Home() {
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
@@ -99,7 +98,6 @@ export default function Home() {
             <source src="/HeroVideo.mp4" type="video/mp4" />
         </video>
       </div>
-{/*---------------------------------------- home-component-sections ----------------------------------------*/}
       <div className="home-component-sections">
         <div className="home-component-sections-in">
           {/*---------------------------------------- home counter section ----------------------------------------*/}
