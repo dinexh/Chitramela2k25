@@ -31,6 +31,8 @@ export default function Payment() {
                 src="/payment-qr.png" 
                 alt="Payment QR Code" 
                 className="qr-code"
+                width={500}
+                height={500}
               />
               <p className="payment-instructions">
                 Scan QR code to pay ₹500
