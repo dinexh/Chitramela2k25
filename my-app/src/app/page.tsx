@@ -9,6 +9,8 @@ import { activities, Activity } from '@/app/data/activities';
 import { galleryImages } from '@/app/data/gallery';
 import { faqs, FAQ } from '@/app/data/faqs';
 import { aboutData } from '@/app/data/about';
+// custom hooks
+import { useScrollAnimation } from '@/app/hooks/useScrollAnimation';
 
 export default function Home() {
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
@@ -17,6 +19,13 @@ export default function Home() {
   const activitiesRef = useRef<HTMLDivElement>(null)
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [selectedAboutInfo, setSelectedAboutInfo] = useState<number | null>(null);
+  const [showNav, setShowNav] = useState(false);
+  // custom hooks
+  const counterRef = useScrollAnimation();
+  const aboutRef = useScrollAnimation();
+  const eventsRef = useScrollAnimation();
+  const galleryRef = useScrollAnimation();
+  const faqRef = useScrollAnimation();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -50,6 +59,21 @@ export default function Home() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.querySelector('.home-component-hero');
+      if (heroSection) {
+        const heroHeight = heroSection.clientHeight;
+        const scrollPosition = window.scrollY;
+        
+        setShowNav(scrollPosition > heroHeight / 2);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index)
   }
@@ -66,20 +90,20 @@ export default function Home() {
 
   return (
     <div className="home-component">
-      <div className="home-component-nav">
+      <div className={`home-component-nav ${showNav ? 'visible' : ''}`}>
         <Navigation />
       </div>
 
-      <div className="home-component-hero">
+      <div className="home-component-hero" id="hero">
         <video ref={videoRef} autoPlay loop muted playsInline>
-          <source src="/assets/HeroVideo.mp4" type="video/mp4" />
+            <source src="/HeroVideo.mp4" type="video/mp4" />
         </video>
       </div>
-
+{/*---------------------------------------- home-component-sections ----------------------------------------*/}
       <div className="home-component-sections">
         <div className="home-component-sections-in">
           {/*---------------------------------------- home counter section ----------------------------------------*/}
-          <section className="home-component-counter">
+          <section className="home-component-counter scroll-hidden" ref={counterRef}>
             <div className="home-component-counter-heading">  
               <h2>Event Starts In:</h2>
             </div>
@@ -95,7 +119,7 @@ export default function Home() {
             </div>
           </section>
           {/*---------------------------------------- about info section ----------------------------------------*/}
-          <div className="home-component-about-info" id="about-info">
+          <div className="home-component-about-info scroll-hidden" ref={aboutRef} id="about-info">
             <div className="home-component-about-info-heading">
               <h2>About The Festival</h2>
             </div>
@@ -119,7 +143,7 @@ export default function Home() {
       
 
           {/*---------------------------------------- events section ----------------------------------------*/}
-          <div className="home-component-events" id="events">
+          <div className="home-component-events scroll-hidden" ref={eventsRef} id="events">
             <div className="home-component-events-heading">
               <h2>Get to know our events</h2>
             </div>
@@ -151,7 +175,7 @@ export default function Home() {
           </div>
 
           {/*---------------------------------------- gallery section ----------------------------------------*/}
-          <div className="home-component-gallery" id="gallery">
+          <div className="home-component-gallery scroll-hidden" ref={galleryRef} id="gallery">
             <div className="home-component-gallery-heading">
               <h2>Gallery</h2>
             </div>
@@ -174,7 +198,7 @@ export default function Home() {
           </div>
 
           {/*---------------------------------------- faq section ----------------------------------------*/}
-          <div className="home-component-faq" id="faq">
+          <div className="home-component-faq scroll-hidden" ref={faqRef} id="faq">
             <div className="home-component-faq-heading">
               <h2>Frequently Asked Questions</h2>
             </div>

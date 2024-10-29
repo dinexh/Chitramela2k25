@@ -12,12 +12,9 @@
   align-items: center;
   justify-content: center;
 }
-.home-component-nav{
+.home-component-nav,
+.home-component-footer {
   width: 100%;
-}
-.home-component-footer{
-  width: 100%;
-
 }
 /* ---------------------------------------- hero section ---------------------------------------- */
 .home-component-hero{
@@ -42,11 +39,12 @@
 .home-component-sections-in{
   width: 95%;
   padding: 0.5rem;
-  gap: 1rem;
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 }
 
 
@@ -55,9 +53,15 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .home-component-counter-item {
+  min-width: 180px;
   text-align: center;
 }
 
@@ -87,7 +91,8 @@
 }
 
 .home-component-counter-card {
-  background: #1a1a1a;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
   border-radius: 15px;
   padding: 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -133,41 +138,36 @@
 }
 
 /* ---------------------------------------- gallery section ---------------------------------------- */
-.gallery-content {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding-bottom: 1rem;
-}
-
-.gallery-image {
-  width: 16rem;
-  height: 16rem;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  flex-shrink: 0;
-}
 .home-component-gallery {
   width: 100%;
-  padding: 2rem ;
+  padding: 4rem 2rem;
+  /* background: linear-gradient(45deg, #000000, #1a1a1a); */
+  position: relative;
   overflow: hidden;
 }
-
+.home-component-gallery::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 60%); */
+  pointer-events: none;
+}
 .home-component-gallery-scroll {
   width: 100%;
   overflow: hidden;
 }
-
 .home-component-gallery-content {
   display: flex;
   gap: 1rem;
+  /* background-color: red; */
   width: max-content;
 }
-
 .home-component-gallery-content.scrolling {
   animation: scroll var(--animation-duration) linear infinite;
 }
-
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -176,135 +176,120 @@
     transform: translateX(calc(-1 * var(--scroll-width)));
   }
 }
-
 .home-component-gallery-image-wrapper {
   width: 40vw;
-  height: 50vh;
+  height: 40vh;
   flex-shrink: 0;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0.5rem;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  transition: all 0.4s ease;
 }
-
+.home-component-gallery-image-wrapper:hover {
+  transform: translateY(-5px);
+  border-color: #FFD700;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
 .home-component-gallery-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-
 .home-component-gallery-image:hover {
   transform: scale(1.05);
 }
 
 /* ---------------------------------------- FAQ section ---------------------------------------- */
-.faq-content {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.home-component-faq {
+  padding: 4rem 2rem;
+  /* background: linear-gradient(45deg, #1a1a1a, #000000); */
+  position: relative;
+  overflow: hidden;
 }
-
-.faq-item {
-  background-color: #111;
-  padding: 1rem;
-  border-radius: 0.5rem;
-}
-
-.faq-question {
-  font-size: 1.25rem;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #FFD700;
+.home-component-faq::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: url('/assets/film-pattern.png') repeat; */
+  opacity: 0.05;
+  pointer-events: none;
 }
 .home-component-faq-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
   gap: 1rem;
   padding: 0 2rem;
 }
-
 .home-component-faq-item {
-  background-color: rgba(255, 215, 0, 0.1);
-  border: 0.0625rem solid #FFD700;
-  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
   overflow: hidden;
+  transition: all 0.4s ease;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
 }
-
+.home-component-faq-item:hover {
+  border-color: #FFD700;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+}
 .home-component-faq-question {
-  font-size: 1.25rem;
-  font-weight: 600;
-  padding: 1rem;
+  padding: 1.5rem;
+  font-size: 1.2rem;
   color: #FFD700;
+  /* background: rgba(255, 215, 0, 0.05); */
   cursor: pointer;
+  /* width: 60%; */
+  transition: all 0.3s ease;
 }
-
 .home-component-faq-answer {
+  padding: 0 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease, padding 0.3s ease;
+  transition: all 0.3s ease;
 }
-
 .home-component-faq-answer.open {
-  max-height: 20rem;
-  padding: 1rem;
+  max-height: 500px;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
 }
 
-
-
-.home-component-events-content {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
-  gap: 2rem;
-}
-.home-component-event-card {
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  background: linear-gradient(109.6deg, rgb(14, 11, 56) 11.2%, rgb(239, 37, 37) 91.1%);
-  border-radius: 1rem;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+/* ---------------------------------------- Events Section Enhancement ---------------------------------------- */
+.home-component-events {
+  padding: 4rem 2rem;
+  /* background: linear-gradient(45deg, #1a1a1a, #000000); */
   position: relative;
-  height: 600px;
-  width:90%;
-  cursor: pointer;
-}
-
-.home-component-event-card:hover {
-  transform: scale(1.05);
-}
-
-.home-component-event-card img {
+  overflow: hidden;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
-
-.home-component-event-card-content {
+.home-component-events::before {
+  content: '';
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
-  padding: 1.5rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  bottom: 0;
+  background: url('/assets/film-pattern.png') repeat;
+  opacity: 0.05;
+  pointer-events: none;
 }
-
-.home-component-event-card-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #FFD700;
-  margin-bottom: 0.5rem;
-}
-
-.home-component-event-card-description {
-  font-size: 1rem;
-  color: #fff;
-}
-
-.home-component-events-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
-
 .home-component-events-content {
   display: flex;
   overflow-x: auto;
@@ -313,73 +298,73 @@
   -ms-overflow-style: none;
   padding-bottom: 2rem;
 }
-
 .home-component-events-content::-webkit-scrollbar {
   display: none;
 }
-
 .home-component-event-card {
   flex: 0 0 auto;
   width: calc(33.333% - 2rem);
   margin-right: 2rem;
   scroll-snap-align: start;
-  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 15px;
   overflow: hidden;
   position: relative;
-  height: 500px;
+  height: 400px;
+  transition: all 0.4s ease;
 }
-
+.home-component-event-card:hover {
+  transform: translateY(-10px);
+  border-color: #FFD700;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+}
 .home-component-event-card:last-child {
   margin-right: 0;
 }
-
 .home-component-event-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .home-component-event-card-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 2rem;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
 }
-
 .home-component-event-card-title {
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
   margin-bottom: 1rem;
 }
-
 .home-component-event-card-button {
-  background-color: #FFD700;
-  color: #000;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background: transparent;
+  border: 2px solid #FFD700;
+  color: #FFD700;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
-
 .home-component-event-card-button:hover {
-  background-color: #FFF;
+  background: #FFD700;
+  color: #000;
 }
-
 .home-component-events-nav {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
 }
-
 .home-component-events-nav-btn {
   background-color: #FFD700;
   color: #000;
@@ -394,18 +379,17 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .home-component-events-nav-btn:hover {
   background-color: #FFF;
 }
 
+/* ---------------------------------------- About Section Enhancement ---------------------------------------- */
 .home-component-about {
   padding: 4rem 2rem;
-  background: linear-gradient(45deg, #000000, #1a1a1a);
+  /* background: linear-gradient(45deg, #000000, #1a1a1a); */
   position: relative;
   overflow: hidden;
 }
-
 .home-component-about::before {
   content: '';
   position: absolute;
@@ -416,7 +400,6 @@
   background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
   pointer-events: none;
 }
-
 .home-component-about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -425,7 +408,6 @@
   margin: 3rem auto 0;
   padding: 0 1rem;
 }
-
 .home-component-about-card {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
@@ -437,7 +419,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .home-component-about-card::before {
   content: '';
   position: absolute;
@@ -449,17 +430,14 @@
   transform: translateX(-100%);
   transition: transform 0.5s ease;
 }
-
 .home-component-about-card:hover::before {
   transform: translateX(100%);
 }
-
 .home-component-about-card:hover {
   transform: translateY(-10px);
   border-color: #FFD700;
   box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
 }
-
 .about-card-icon {
   font-size: 3rem;
   margin-bottom: 1.5rem;
@@ -469,19 +447,16 @@
   border-radius: 50%;
   animation: float 3s ease-in-out infinite;
 }
-
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
-
 .home-component-about-card h3 {
   color: #FFD700;
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }
-
 .home-component-about-card p {
   color: #ffffff;
   margin-bottom: 0.5rem;
@@ -489,7 +464,6 @@
   line-height: 1.6;
   opacity: 0.9;
 }
-
 .about-card-button {
   margin-top: 1.5rem;
   padding: 0.8rem 1.5rem;
@@ -503,22 +477,18 @@
   position: relative;
   overflow: hidden;
 }
-
 .about-card-button:hover {
   background: #FFD700;
   color: #000000;
 }
 
-
-
-
+/* ---------------------------------------- About Info Section Enhancement ---------------------------------------- */
 .home-component-about-info {
   padding: 4rem 2rem;
-  background: linear-gradient(45deg, #000000, #1a1a1a);
+  /* background: linear-gradient(45deg, #000000, #1a1a1a); */
   position: relative;
   overflow: hidden;
 }
-
 .home-component-about-info::before {
   content: '';
   position: absolute;
@@ -530,7 +500,6 @@
   opacity: 0.1;
   pointer-events: none;
 }
-
 .home-component-about-info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -539,7 +508,6 @@
   margin: 3rem auto 0;
   padding: 0 1rem;
 }
-
 .home-component-about-info-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
@@ -549,7 +517,6 @@
   transition: all 0.4s ease;
   position: relative;
 }
-
 .home-component-about-info-card::before {
   content: '';
   position: absolute;
@@ -561,28 +528,23 @@
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
-
 .home-component-about-info-card:hover::before {
   transform: translateX(100%);
 }
-
 .home-component-about-info-card:hover {
   transform: translateY(-5px);
   border-color: #FFD700;
   box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
 }
-
 .about-info-content {
   padding: 2rem;
 }
-
 .about-info-content h3 {
   color: #FFD700;
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }
-
 .about-info-content p {
   color: #ffffff;
   margin-bottom: 1.5rem;
@@ -590,7 +552,6 @@
   line-height: 1.6;
   opacity: 0.9;
 }
-
 .about-info-button {
   background: transparent;
   border: 2px solid #FFD700;
@@ -603,13 +564,12 @@
   position: relative;
   overflow: hidden;
 }
-
 .about-info-button:hover {
   background: #FFD700;
   color: #000000;
 }
 
-
+/* ---------------------------------------- Modal Content ---------------------------------------- */
 .modal-about-content {
   padding: 1.5rem;
   color: #ffffff;
@@ -617,18 +577,15 @@
   max-height: 70vh;
   overflow-y: auto;
 }
-
 .modal-about-content p {
   margin-bottom: 1rem;
 }
-
 .home-component-modal-content {
   color: #fff;
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
 }
-
 .home-component-modal-content h3 {
   color: #FFD700;
   font-size: 2rem;
@@ -638,7 +595,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
 }
-
 .modal-about-content {
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
@@ -649,21 +605,17 @@
   scrollbar-width: thin;
   scrollbar-color: #FFD700 rgba(255, 255, 255, 0.1);
 }
-
 .modal-about-content::-webkit-scrollbar {
   width: 8px;
 }
-
 .modal-about-content::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
-
 .modal-about-content::-webkit-scrollbar-thumb {
   background: #FFD700;
   border-radius: 4px;
 }
-
 .modal-about-content p {
   margin-bottom: 1.5rem;
   line-height: 1.8;
@@ -672,185 +624,56 @@
   text-align: justify;
 }
 
+/* ---------------------------------------- Global Heading Styles ---------------------------------------- */
 
-
-
-/* Counter Section Enhancement */
-.home-component-counter {
-  padding: 4rem 2rem;
-  background: linear-gradient(45deg, #000000, #1a1a1a);
-  position: relative;
-  overflow: hidden;
-}
-
-.home-component-counter::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.home-component-counter h2 {
-  color: #FFD700;
-  font-size: 2.5rem;
+.home-component-counter-heading,
+.home-component-about-info-heading,
+.home-component-events-heading,
+.home-component-gallery-heading,
+.home-component-faq-heading {
+  width: 100%;
   text-align: center;
-  margin-bottom: 3rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
+  margin-bottom: 2rem;
 }
 
-/* Events Section Enhancement */
-.home-component-events {
-  padding: 4rem 2rem;
-  background: linear-gradient(45deg, #1a1a1a, #000000);
-  position: relative;
-  overflow: hidden;
-}
-
-.home-component-events::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('/assets/film-pattern.png') repeat;
-  opacity: 0.05;
-  pointer-events: none;
-}
-
-.home-component-event-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 15px;
-  height: 400px;
-  transition: all 0.4s ease;
-}
-
-.home-component-event-card:hover {
-  transform: translateY(-10px);
-  border-color: #FFD700;
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
-}
-
-.home-component-event-card-overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
-  padding: 2rem;
-}
-
-.home-component-event-card-button {
-  background: transparent;
-  border: 2px solid #FFD700;
+.home-component-counter-heading h2,
+.home-component-about-info-heading h2,
+.home-component-events-heading h2,
+.home-component-gallery-heading h2,
+.home-component-faq-heading h2 {
   color: #FFD700;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  font-weight: 500;
-  transition: all 0.3s ease;
+  font-size: 2rem;
+  font-weight: 700;
 }
 
-.home-component-event-card-button:hover {
-  background: #FFD700;
-  color: #000;
+html {
+  scroll-behavior: smooth;
 }
 
-/* Gallery Section Enhancement */
-.home-component-gallery {
-  padding: 4rem 2rem;
-  background: linear-gradient(45deg, #000000, #1a1a1a);
-  position: relative;
-  overflow: hidden;
+/* If you want to support Safari and other browsers that don't support scroll-behavior */
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-.home-component-gallery::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
-  pointer-events: none;
+/* Add these animation classes */
+.animate-in {
+  animation: fadeInUp 0.8s ease forwards;
 }
 
-.home-component-gallery-image-wrapper {
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: all 0.4s ease;
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(50px);
 }
 
-.home-component-gallery-image-wrapper:hover {
-  transform: translateY(-5px);
-  border-color: #FFD700;
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-/* FAQ Section Enhancement */
-.home-component-faq {
-  padding: 4rem 2rem;
-  background: linear-gradient(45deg, #1a1a1a, #000000);
-  position: relative;
-  overflow: hidden;
-}
-
-.home-component-faq::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('/assets/film-pattern.png') repeat;
-  opacity: 0.05;
-  pointer-events: none;
-}
-
-.home-component-faq-item {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: all 0.4s ease;
-  margin-bottom: 1rem;
-}
-
-.home-component-faq-item:hover {
-  border-color: #FFD700;
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
-}
-
-.home-component-faq-question {
-  padding: 1.5rem;
-  font-size: 1.2rem;
-  color: #FFD700;
-  background: rgba(255, 215, 0, 0.05);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.home-component-faq-question:hover {
-  background: rgba(255, 215, 0, 0.1);
-}
-
-.home-component-faq-answer {
-  padding: 0 1.5rem;
-  color: rgba(255, 255, 255, 0.9);
-  line-height: 1.8;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.home-component-faq-answer.open {
-  max-height: 500px;
-  padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.3);
-}
-

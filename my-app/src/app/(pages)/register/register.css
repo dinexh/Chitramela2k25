@@ -136,7 +136,6 @@
   margin-top: 1.5rem;
   transition: all 0.3s ease;
 }
-
 .submit-btn:hover {
   background: #FFC800;
   transform: translateY(-2px);
@@ -149,7 +148,6 @@ input[type="file"] {
   cursor: pointer;
   color: #fff;
 }
-
 input[type="file"]:hover {
   border-color: #FFD700;
 }
@@ -159,19 +157,13 @@ input[type="file"]:hover {
   z-index: 2;
   margin-top: 2rem;
 }
-
-/* Placeholder color */
 ::placeholder {
   color: rgba(255, 255, 255, 0.5);
 }
-
-/* Select element options */
 select option {
   background-color: #000;
   color: #fff;
 }
-
-/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -184,82 +176,11 @@ select option {
   background: #FFD700;
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: #FFC800;
 }
-/*----------------------------------------------------------confimationPage---------------------------------------*/
-/*--------------------------------------------------------paymentPage-------------------------------------------------*/
-.payment-section {
-  max-width: 600px;
-  margin: 0 auto;
-}
 
-.qr-code-container {
-  text-align: center;
-  margin-bottom: 32px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 24px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.qr-code {
-  max-width: 300px;
-  margin-bottom: 16px;
-  border: 2px solid #FFD700;
-  border-radius: 10px;
-  padding: 10px;
-  background: white;
-}
-
-.payment-instructions {
-  font-size: 1.2em;
-  color: #FFD700;
-  margin-bottom: 24px;
-}
-
-.payment-verification-form {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 24px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
-}
-
-.payment-verification-form .form-group {
-  margin-bottom: 20px;
-}
-
-.payment-verification-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #FFD700;
-}
-
-.payment-verification-form input {
-  width: 100%;
-  padding: 12px;
-  border: 2px solid #444;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-.payment-verification-form input:focus {
-  outline: none;
-  border-color: #FFD700;
-  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
-}
-
-.payment-verification-form input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* Mobile Responsive Styles */
+/* ---------------------------mobile responsive styles--------------------------- */
 @media screen and (max-width: 768px) {
   .register-component-content {
     width: 90%;
@@ -403,4 +324,9 @@ select option {
   .profile-box {
     margin: 10px 0;
   }
+}
+
+.event-btn.selected {
+    background-color: #4CAF50;
+    color: white;
 }
