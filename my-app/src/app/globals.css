@@ -339,22 +339,26 @@
   background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 .home-component-event-card-title {
   font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
   margin-bottom: 1rem;
+  background-color:#ffd90085 ;
+  padding: .5rem 1rem;
+  border-radius: 2rem;
 }
 .home-component-event-card-button {
   background: transparent;
   border: 2px solid #FFD700;
-  color: #FFD700;
+  color: #ffffff;
+  background-color: #ffd90071;
   padding: 0.8rem 1.5rem;
   border-radius: 25px;
-  font-weight: 500;
+  font-weight: 800;
   transition: all 0.3s ease;
 }
 .home-component-event-card-button:hover {

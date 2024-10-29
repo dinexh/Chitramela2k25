@@ -159,7 +159,7 @@ export default function Home() {
                       />
                     </div>
                     <div className="home-component-event-card-overlay">
-                      <h3 className="home-component-event-card-title">{activity.title}</h3>
+                      {/* <h3 className="home-component-event-card-title">{activity.title}</h3> */}
                       <button className="home-component-event-card-button" onClick={() => setSelectedActivity(activity)}>
                         Read More
                       </button>
