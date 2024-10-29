@@ -20,7 +20,7 @@ const Team = () => {
           <div className="Team-two-in">
             <div className="Team-two-in-one">
               <div className="Team-two-in-one-in">
-              <Image src={Pic} alt="Chief" width={300} height={300} />
+              <Image src={Pic} alt="Chief" width={250} height={250} />
                 <div className="description">
                     <p>Name</p>
                     <p>Chief</p>
@@ -31,7 +31,7 @@ const Team = () => {
             <div className="Team-two-in-two">
               <div className="Team-two-in-two-in">
                 <div className="Team-two-in-two-in-one">
-                <Image src={Pic} alt="Chief" width={300} height={300} />
+                <Image src={Pic} alt="Chief" width={250} height={250} />
                   <div className="description">
                     <p>Name</p>
                     <p>Chief</p>
@@ -39,7 +39,7 @@ const Team = () => {
                   </div>
                 </div>
                 <div className="Team-two-in-two-in-one">
-                  <Image src={Pic} alt="Chief" width={300} height={300} />
+                  <Image src={Pic} alt="Chief" width={250} height={250} />
                   <div className="description">
                     <p>Name</p>
                     <p>Chief</p>
@@ -57,7 +57,7 @@ const Team = () => {
                       <div className="description">
                         <p>{member.name}</p>
                         <p>{member.designation}</p>
-                        <p>Contact: <Link href={member.instagram} legacyBehavior ><a><FaInstagram/></a></Link></p>
+                        <p className='social'>Contact: <Link href={member.instagram} legacyBehavior ><a className='media'><FaInstagram/></a></Link></p>
                       </div>
                     </div>
                     

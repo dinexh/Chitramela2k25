@@ -17,7 +17,7 @@
     text-align: center;
     background-color: #0a0a0a;
     color: yellow;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     padding: 1%;
     font-size: 1.5rem;
 }
@@ -60,7 +60,7 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     padding-bottom: 3%;
 }
@@ -88,9 +88,9 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.Team-two-in-three-in {
+/* .Team-two-in-three-in {
     
-}
+} */
 
 
 .description{
@@ -107,4 +107,20 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
+}
+
+.media{
+    color: white;
+    font-size: 1rem;
+}
+
+.media:hover{
+    color: yellow;
+}
+
+.social{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
 }
