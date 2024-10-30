@@ -90,7 +90,7 @@ export default function Navigation() {
           >
             FAQ
           </Link>
-          <Link href="/Team" className="navigation-link">Team</Link>
+          <Link href="/team" className="navigation-link">team</Link>
           <Link href="/register" className="navigation-link register">Register</Link>
         </div>
       </div>
