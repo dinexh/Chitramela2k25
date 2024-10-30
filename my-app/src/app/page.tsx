@@ -10,7 +10,6 @@ import { galleryImages } from '@/app/data/gallery';
 import { faqs, FAQ } from '@/app/data/faqs';
 import { aboutData } from '@/app/data/about';
 import { useScrollAnimation } from '@/app/components/useScrollAnimation';
-
 export default function Home() {
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
@@ -19,6 +18,7 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [selectedAboutInfo, setSelectedAboutInfo] = useState<number | null>(null);
   const [showNav, setShowNav] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState<{ [key: string]: boolean }>({});
   // custom hooks
   const counterRef = useScrollAnimation();
   const aboutRef = useScrollAnimation();
@@ -85,6 +85,10 @@ export default function Home() {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleImageLoad = (id: string) => {
+    setImagesLoaded(prev => ({ ...prev, [id]: true }));
   };
 
   return (
@@ -208,6 +212,9 @@ export default function Home() {
                     onClick={() => toggleFaq(index)}
                   >
                     {faq.question}
+                    <span className={`faq-indicator ${openFaqIndex === index ? 'open' : ''}`}>
+                      &#x25BC;
+                    </span>
                   </h3>
                   <p className={`home-component-faq-answer ${openFaqIndex === index ? 'open' : ''}`}>
                     {faq.answer}

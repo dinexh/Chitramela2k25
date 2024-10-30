@@ -11,7 +11,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #0a0a0a;
+  background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+  position: relative;
+}
+.home-component::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 90% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 20%),
+    radial-gradient(circle at 30% 80%, rgba(255, 215, 0, 0.05) 0%, transparent 20%);
+  pointer-events: none;
 }
 .home-component-nav,
 .home-component-footer {
@@ -93,12 +107,19 @@
 }
 
 .home-component-counter-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+  transform: skew(-3deg);
   padding: 2rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+}
+
+.home-component-counter-card:hover {
+  transform: skew(-3deg) translateY(-5px);
+  border-color: #FFD700;
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
 }
 
 .home-component-counter-value {
@@ -187,8 +208,9 @@
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
-  border: 1px solid rgba(255, 215, 0, 0.3);
-  transition: all 0.4s ease;
+  border: 3px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+  transition: all 0.5s ease;
 }
 .home-component-gallery-image-wrapper:hover {
   transform: translateY(-5px);
@@ -233,9 +255,10 @@
   padding: 0 2rem;
 }
 .home-component-faq-item {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.2));
+  border: 1px solid rgba(255, 215, 0, 0.2);
+  padding: 1rem;
+  transition: all 0.3s ease;
   border-radius: 15px;
   overflow: hidden;
   transition: all 0.4s ease;
@@ -248,16 +271,14 @@
 }
 .home-component-faq-item:hover {
   border-color: #FFD700;
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+  transform: translateX(5px);
 }
 .home-component-faq-question {
-  padding: 1.5rem;
-  font-size: 1.2rem;
-  color: #FFD700;
-  /* background: rgba(255, 215, 0, 0.05); */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
-  /* width: 60%; */
-  transition: all 0.3s ease;
 }
 .home-component-faq-answer {
   padding: 0 1.5rem;
@@ -275,6 +296,17 @@
 .faq-arrow {
   position: relative;
   right: 0rem;
+}
+
+.faq-indicator {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
+.faq-indicator.open {
+  transform: rotate(180deg);
 }
 
 /* ---------------------------------------- Events Section Enhancement ---------------------------------------- */
@@ -312,19 +344,21 @@
   width: calc(33.333% - 2rem);
   margin-right: 2rem;
   scroll-snap-align: start;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  background: linear-gradient(145deg, rgba(255, 215, 0, 0.1), rgba(0, 0, 0, 0.3));
+  border: 2px solid rgba(255, 215, 0, 0.2);
+  transform: perspective(1000px) rotateY(0deg);
+  transition: all 0.5s ease;
   border-radius: 15px;
   overflow: hidden;
   position: relative;
   height: 425px;
-  transition: all 0.4s ease;
 }
 .home-component-event-card:hover {
-  transform: translateY(-10px);
+  transform: perspective(1000px) rotateY(5deg) translateY(-10px);
   border-color: #FFD700;
-  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+  box-shadow: 
+    0 15px 35px rgba(255, 215, 0, 0.2),
+    0 0 20px rgba(255, 215, 0, 0.1);
 }
 .home-component-event-card:last-child {
   margin-right: 0;
@@ -356,18 +390,21 @@
   border-radius: 2rem;
 }
 .home-component-event-card-button {
-  background: transparent;
-  border: 2px solid #FFD700;
-  color: #000000;
-  background-color: #ffd700;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  font-weight: 800;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  border: none;
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
   transition: all 0.3s ease;
 }
 .home-component-event-card-button:hover {
-  background: #FFD700;
-  color: #000;
+  background: linear-gradient(45deg, #FFA500, #FFD700);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
 }
 .home-component-events-nav {
   display: flex;
@@ -563,20 +600,21 @@
   opacity: 0.9;
 }
 .about-info-button {
-  background: transparent;
-  border: 2px solid #FFD700;
-  color: #FFD700;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  font-weight: 500;
-  cursor: pointer;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  border: none;
+  color: #000;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
   transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
 }
 .about-info-button:hover {
-  background: #FFD700;
-  color: #000000;
+  background: linear-gradient(45deg, #FFA500, #FFD700);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
 }
 
 /* ---------------------------------------- Modal Content ---------------------------------------- */
@@ -652,9 +690,48 @@
 .home-component-gallery-heading h2,
 .home-component-faq-heading h2 {
   color: #FFD700;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
 }
+
+.home-component-counter-heading h2::before,
+.home-component-about-info-heading h2::before,
+.home-component-events-heading h2::before,
+.home-component-gallery-heading h2::before,
+.home-component-faq-heading h2::before,
+.home-component-counter-heading h2::after,
+.home-component-about-info-heading h2::after,
+.home-component-events-heading h2::after,
+.home-component-gallery-heading h2::after,
+.home-component-faq-heading h2::after {
+  content: '✦';
+  position: absolute;
+  color: #FFD700;
+  font-size: 1.5rem;
+}
+
+.home-component-counter-heading h2::before,
+.home-component-about-info-heading h2::before,
+.home-component-events-heading h2::before,
+.home-component-gallery-heading h2::before,
+.home-component-faq-heading h2::before {
+  left: -10px;
+}
+
+.home-component-counter-heading h2::after,
+.home-component-about-info-heading h2::after,
+.home-component-events-heading h2::after,
+.home-component-gallery-heading h2::after,
+.home-component-faq-heading h2::after {
+  right: -10px;
+}
+
 /* ---------------------------------------- Scroll Behavior ---------------------------------------- */
 html {
   scroll-behavior: smooth;
