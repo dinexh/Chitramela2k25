@@ -1,6 +1,9 @@
 .footer {
   border-top: 2px solid rgba(255, 215, 0, 0.2);
-  background: linear-gradient(to bottom, #0a0a0a, #000000);
+  background: 
+  radial-gradient(circle at 10% 20%, rgba(9, 147, 150, 0.05) 0%, transparent 20%),
+  radial-gradient(circle at 90% 50%, rgba(0, 95, 115, 0.05) 0%, transparent 20%),
+  radial-gradient(circle at 30% 80%, rgba(148, 210, 189, 0.05) 0%, transparent 20%);
   width: 100%;
   display: flex;
   flex-direction: column;

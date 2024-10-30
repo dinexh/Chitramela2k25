@@ -1,210 +1,190 @@
-.TeamPage-Container{
-    width: 100%;
-    
+.TeamPage-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #0F0F0F;
+  color: #FFFFFF;
 }
-.TeamPage-Container-in{
-    width: 90%;
-    display: flex;
-    flex-direction: column;
+.TeamPage-footer{
+  width: 100%;
 }
-
-.Team-one{
-    width: 100%;
+.TeamPage-container-in {
+  width: 95%;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-
-.Team-one-in{
-    width: 100%;
-    text-align: center;
-    background-color: #0a0a0a;
-    color: yellow;
-    /* text-decoration: underline; */
-    padding: 1%;
-    font-size: 1.5rem;
+.TeamPage-container-in-heading {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
 }
-
-
-.Team-two{
-    background-color: #0a0a0a;
-    color: white;
-    width: 100%;
-    padding: 3% 0 5% 0;
+.TeamPage-container-in-heading h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
-
-.Team-three{
-    width: 100%;
+.TeamPage-container-in-heading p {
+  font-size: 1rem;
+  color: #FFD700;
 }
-
-.Team-two-in{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
+.TeamPage-container-in-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
 }
-
-
-.Team-two-in-one{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.TeamPage-container-in-content-in{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 0.5rem;
 }
-
-.Team-two-in-two{
-    width: 100%;
+.TeamPage-content-in-one{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.Team-two-in-two-in{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    padding-bottom: 3%;
+.TeamPage-Profile {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
 }
-
-/* Image{
-    width: 20rem;
-    height: 20rem;
-} */
-
-.Team-two-in-three{
-    width: 100%;
+.TeamPage-content-in-one .TeamPage-Profile {
+  max-width: 300px;
+  background: #1A1A1A;
+  border-radius: 1rem;
+  padding: 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
 }
-
-.Team-two-in-three-in{
-    margin: 0 auto;
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    /* gap:10%; */
-    row-gap: 1rem;
-    column-gap: 1%;
+.TeamPage-content-in-two,
+.TeamPage-content-in-three {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}.TeamPage-content-in-one img,
+.TeamPage-content-in-two-in-one img,
+.TeamPage-content-in-three-in-one img {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #333333;
+  transition: border-color 0.3s ease;
 }
-
-.Team-two-in-one-in,.Team-two-in-two-in-one,.Team-two-in-three-in-one{
-    border: 2px solid rgb(186, 210, 98);
-    border-radius: 2%;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+.TeamPage-content-in-one img:hover,
+.TeamPage-content-in-two-in-one img:hover,
+.TeamPage-content-in-three-in-one img:hover {
+  border-color: #FFD700;
 }
-
-.Team-two-in-three-in-one{
-    margin: 0 1rem;
+.description {
+  text-align: center;
+  width: 100%;
 }
-
-.description{
-    font-size: 1rem;
-    font-weight: 600;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.description p {
+  margin: 0.5rem 0;
 }
-
-.description p{
-    display: flex;
-    gap: .5rem;
-    align-items: center;
-    justify-content: center;
+.description p:first-child {
+  font-size: 1.25rem;
+  font-weight: 600;
 }
-
-.media{
-    margin-top: .4rem;
-    color: white;
-    font-size: 1rem;
+.description p:nth-child(2) {
+  color: #FFD700;
+  font-size: 1rem;
 }
-
-.media:hover{
-    color: yellow;
+.description .media {
+  font-size: 1.25rem;
 }
-
-.social{
-    display: flex;
-    /* gap: 1rem; */
-    justify-content: center;
-    align-items: center;
+.TeamPage-content-in-two-in,
+.TeamPage-content-in-three-in {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-/* Media Queries */
-@media screen and (max-width: 1200px) {
-  .Team-two-in-three-in {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-  }
+.TeamPage-content-in-two-in-one,
+.TeamPage-content-in-three-in-one {
+  background: #1A1A1A;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  max-width: 300px;
+  width: 100%;
 }
-
-@media screen and (max-width: 992px) {
-  .Team-two-in-three-in {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .Team-two-in-two-in {
-    flex-direction: column;
-    gap: 2rem;
-  }
+.TeamPage-footer {
+  margin-top: 2rem;
 }
-
-@media screen and (max-width: 768px) {
-  .Team-one h1 {
-    font-size: 2rem;
-  }
-
-  .Team-two-in-one-in Image,
-  .Team-two-in-two-in-one Image,
-  .Team-two-in-three-in-one Image {
-    width: 200px;
-    height: 200px;
-  }
-
-  .description p {
-    font-size: 0.9rem;
-  }
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 2rem;
+  width: fit-content;
 }
-
-@media screen and (max-width: 576px) {
-  .Team-two-in-three-in {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .Team-one h1 {
-    font-size: 1.75rem;
-  }
-
-  .Team-two-in-one-in Image,
-  .Team-two-in-two-in-one Image,
-  .Team-two-in-three-in-one Image {
-    width: 180px;
-    height: 180px;
-  }
-
-  .Team-two-in {
-    padding: 1rem;
-  }
-
-  .description {
-    padding: 0.5rem;
-  }
+.social-icons .media {
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
 }
-
-@media screen and (max-width: 400px) {
-  .Team-one h1 {
-    font-size: 1.5rem;
-  }
-
-  .Team-two-in-one-in Image,
-  .Team-two-in-two-in-one Image,
-  .Team-two-in-three-in-one Image {
-    width: 150px;
-    height: 150px;
-  }
-
-  .description p {
-    font-size: 0.8rem;
-  }
+.social-icons .media svg {
+  display: block;
+  margin: auto;
+  width: 20px;
+  height: 20px;
+}
+.social-icons .media:hover {
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.15);
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+.social-icons .media::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 215, 0, 0.1);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+.social-icons .media:hover::after {
+  width: 150%;
+  height: 150%;
+  top: -25%;
+  left: -25%;
 }
