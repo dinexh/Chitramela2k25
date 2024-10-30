@@ -14,42 +14,6 @@
   padding: 1rem;
   width: 95%;
 }
-.footer-in-one img {
-  height: 50px;
-  width: auto;
-}
-.footer-in-two {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-in-two-in{
-  display: flex;
-  gap: 1rem;
-}
-
-.contact-in{
-  color: white;  
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-in a{
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  color: white;
-  text-decoration: none;
-}
-
-.contact-in a:hover {
-  color: yellow;
-}
-
 .footer-social-link {
   display: flex;
   align-items: center;
@@ -70,28 +34,61 @@
 .footer-social-link svg:hover {
   color: yellow;
 }
-.footer-in-contact {
-  /* margin-top: 3rem; */
-  text-align: center;
-  color: #fff;
+.footer-in-one{
+  color: white;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.footer-in-contact p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
-}
-.footer-in-contact a {
-  color: #FFD700;
+.footer-in-one a{
   text-decoration: none;
-  transition: color 0.3s ease;
+  color: white;
 }
-.footer-in-contact a:hover {
-  color: #FFF;
+.footer-in-one a:hover{
+  color: yellow;
 }
-.footer-in-contact span {
-  font-weight: bold;
+.footer-in-two{
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
 }
-
+.footer-in-two img{
+  height: 80px;
+  width: 65%;
+  object-fit: contain;
+}
+.footer-in-three{
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.footer-in-three-in-one{
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-in-three-in-two{
+  width: 100%;
+  text-align: center;
+}
+.footer-in-three-in-two h2{
+  margin-top: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: yellow;
+}
+.footer-in-three-in-two a{
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
+}
 @media (max-width: 768px) {
   .footer-in {
     flex-direction: column;
