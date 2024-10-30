@@ -18,7 +18,6 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [selectedAboutInfo, setSelectedAboutInfo] = useState<number | null>(null);
   const [showNav, setShowNav] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState<{ [key: string]: boolean }>({});
   // custom hooks
   const counterRef = useScrollAnimation();
   const aboutRef = useScrollAnimation();
@@ -86,11 +85,6 @@ export default function Home() {
       });
     }
   };
-
-  const handleImageLoad = (id: string) => {
-    setImagesLoaded(prev => ({ ...prev, [id]: true }));
-  };
-
   return (
     <div className="home-component">
       <div className={`home-component-nav ${showNav ? 'visible' : ''}`}>
