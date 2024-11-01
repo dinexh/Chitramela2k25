@@ -3,9 +3,11 @@ import './rules.css';
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import { useState, useEffect } from 'react';
-import { FaArrowUp } from 'react-icons/fa';
+import { FaArrowUp, FaHome } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 const Rules = () => {
+    const router = useRouter();
     const [selectedCategory, setSelectedCategory] = useState<string>("all");
     const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -23,6 +25,10 @@ const Rules = () => {
             top: 0,
             behavior: 'smooth'
         });
+    };
+
+    const goToHome = () => {
+        router.push('/');
     };
 
     const filterButtons = [
@@ -307,13 +313,22 @@ const Rules = () => {
             <div className="rule-component-footer">
                 <Footer />
             </div>
-            <button 
-                className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
-                onClick={scrollToTop}
-                aria-label="Back to top"
-            >
-                <FaArrowUp />
-            </button>
+            <div className="navigation-buttons">
+                <button 
+                    className="back-to-home"
+                    onClick={goToHome}
+                    aria-label="Back to home"
+                >
+                    <FaHome />
+                </button>
+                <button 
+                    className={`back-to-top ${showBackToTop ? 'visible' : ''}`}
+                    onClick={scrollToTop}
+                    aria-label="Back to top"
+                >
+                    <FaArrowUp />
+                </button>
+            </div>
         </div>
     );
 }
