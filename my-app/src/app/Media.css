@@ -1,0 +1,220 @@
+/* ---------------------------------------- Media Queries ---------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  /* Global Sections */
+  .home-component-sections-in {
+    width: 100%;
+    padding: 0.5rem;
+    gap: 4rem;
+  }
+
+  /* Hero Section */
+  .home-component-hero {
+    height: 50vh;
+  }
+
+  /* Counter Section */
+  .home-component-counter-content {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .home-component-counter-item {
+    min-width: 120px;
+  }
+
+  .home-component-counter-card {
+    padding: 1rem;
+  }
+
+  .home-component-counter-value {
+    font-size: 2rem;
+  }
+
+  .home-component-counter-unit {
+    font-size: 0.8rem;
+  }
+
+  /* Events Section */
+  .home-component-events {
+    padding: 2rem 0.5rem;
+  }
+
+  .home-component-event-card {
+    width: 85%;
+    height: 350px;
+    margin-right: 1rem;
+  }
+
+  .home-component-events-nav-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+  }
+
+  /* Gallery Section */
+  .home-component-gallery {
+    padding: 2rem 0.5rem;
+  }
+
+  .home-component-gallery-image-wrapper {
+    width: 85vw;
+    height: 250px;
+  }
+
+  /* FAQ Section */
+  .home-component-faq {
+    padding: 2rem 0.5rem;
+  }
+
+  .home-component-faq-content {
+    padding: 0 0.5rem;
+  }
+
+  .home-component-faq-item {
+    width: 100%;
+  }
+
+  .home-component-faq-question {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  .home-component-faq-answer {
+    font-size: 0.85rem;
+    padding: 0 1rem;
+  }
+
+  /* About Info Section */
+  .home-component-about-info {
+    padding: 2rem 0.5rem;
+  }
+
+  .home-component-about-info-grid {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .about-info-content {
+    padding: 1.5rem;
+  }
+
+  .about-info-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .about-info-content p {
+    font-size: 0.9rem;
+  }
+
+  /* Global Headings */
+  .home-component-counter-heading h2,
+  .home-component-about-info-heading h2,
+  .home-component-events-heading h2,
+  .home-component-gallery-heading h2,
+  .home-component-faq-heading h2 {
+    font-size: 1.5rem;
+    padding: 0 10px;
+  }
+
+  .home-component-counter-heading h2::before,
+  .home-component-about-info-heading h2::before,
+  .home-component-events-heading h2::before,
+  .home-component-gallery-heading h2::before,
+  .home-component-faq-heading h2::before,
+  .home-component-counter-heading h2::after,
+  .home-component-about-info-heading h2::after,
+  .home-component-events-heading h2::after,
+  .home-component-gallery-heading h2::after,
+  .home-component-faq-heading h2::after {
+    font-size: 1rem;
+  }
+
+  /* Buttons */
+  .home-component-event-card-button,
+  .about-info-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  /* Counter Section */
+  .home-component-counter-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .home-component-counter-item {
+    width: 90%;
+    min-width: unset;
+  }
+
+  /* Events Section */
+  .home-component-event-card {
+    width: 90%;
+    height: 300px;
+  }
+
+  /* Gallery Section */
+  .home-component-gallery-image-wrapper {
+    width: 90vw;
+    height: 200px;
+  }
+
+  /* Modal Content */
+  .home-component-modal-content {
+    padding: 1rem;
+  }
+
+  .home-component-modal-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-about-content {
+    padding: 1rem;
+  }
+
+  .modal-about-content p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Global Headings */
+  .home-component-counter-heading h2,
+  .home-component-about-info-heading h2,
+  .home-component-events-heading h2,
+  .home-component-gallery-heading h2,
+  .home-component-faq-heading h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Add orientation specific styles */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .home-component-hero {
+    height: 100vh;
+  }
+
+  .home-component-counter-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .home-component-counter-item {
+    width: auto;
+    min-width: 120px;
+  }
+
+  .home-component-gallery-image-wrapper {
+    height: 180px;
+  }
+
+  .home-component-event-card {
+    height: 250px;
+  }
+}
