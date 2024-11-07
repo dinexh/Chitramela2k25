@@ -243,11 +243,10 @@ html {
   gap: 1rem;
   width: max-content;
   animation: scrollGallery 45s linear infinite;
-  /* Pause on hover */
+
   &:hover {
     animation-play-state: paused;
   }
-  /* Create a copy of images for seamless loop */
   &::after {
     content: '';
     display: block;
@@ -260,7 +259,6 @@ html {
     transform: translateX(0);
   }
   100% {
-    /* This should be adjusted based on your content width */
     transform: translateX(calc(-50% - 0.5rem));
   }
 }
@@ -280,7 +278,6 @@ html {
 }
 
 .home-component-gallery-image-wrapper:hover {
-  /* transform: translateY(-5px); */
   border-color: #0A9396;
   box-shadow: 0 10px 30px var(--color-shadow);
 }
@@ -358,8 +355,9 @@ html {
 
 .home-component-faq-answer.open {
   max-height: 500px;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  /* background: rgba(255, 255, 255, 0.064); */
+  border-radius: 10px;
 
 }
 
@@ -494,7 +492,7 @@ html {
   overflow: hidden;
 }
 
-/* .home-component-about-info::before {
+.home-component-about-info::before {
    content: '';
   position: absolute;
   top: 0;
@@ -504,7 +502,7 @@ html {
   background: url('/assets/film-pattern.png') repeat;
   opacity: 0.1;
   pointer-events: none;
-}  */
+} 
 
 .home-component-about-info-grid {
   display: grid;
@@ -585,8 +583,8 @@ html {
   box-shadow: 0 8px 20px rgba(9, 147, 150, 0.4);
 }
 
-/* ---------------------------------------- Modal Content ---------------------------------------- */
-.modal-about-content {
+/* ---------------------------------------- ModalB Content ---------------------------------------- */
+.modalB-about-content {
   padding: 1.5rem;
   color: #ffffff;
   line-height: 1.8;
@@ -594,18 +592,18 @@ html {
   overflow-y: auto;
 }
 
-.modal-about-content p {
+.modalB-about-content p {
   margin-bottom: 1rem;
 }
 
-.home-component-modal-content {
+.home-component-modalB-content {
   color: #fff;
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.home-component-modal-content h3 {
+.home-component-modalB-content h3 {
   color: #0A9396;
   font-size: 2rem;
   font-weight: 700;
@@ -615,7 +613,7 @@ html {
   letter-spacing: 1px;
 }
 
-.modal-about-content {
+.modalB-about-content {
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
@@ -626,26 +624,101 @@ html {
   scrollbar-color: #0A9396 rgba(255, 255, 255, 0.1);
 }
 
-.modal-about-content::-webkit-scrollbar {
+.modalB-about-content::-webkit-scrollbar {
   width: 8px;
 }
 
-.modal-about-content::-webkit-scrollbar-track {
+.modalB-about-content::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 4px;
 }
 
-.modal-about-content::-webkit-scrollbar-thumb {
+.modalB-about-content::-webkit-scrollbar-thumb {
   background: #0A9396;
   border-radius: 4px;
 }
 
-.modal-about-content p {
+.modalB-about-content p {
   margin-bottom: 1.5rem;
   line-height: 1.8;
   font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.9);
   text-align: justify;
+}
+
+
+
+/* --------------------------------------ModalA Content-------------------------------------------------- */
+.home-component-modalA-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-height: 80vh; /* Set a maximum height for the modal content */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+
+.home-component-modalA-contentA{
+  width: 90%;
+  margin: auto;
+}
+
+.home-component-modalA-image {
+  flex: 1;
+  max-width: 100%;
+  
+}
+
+.home-component-modalA-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 2;
+  color: #ffffff;
+  line-height: 1.8;
+}
+
+.home-component-modalA-title {
+  color: #0A9396;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.home-component-modalA-description {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: justify;
+}
+
+
+.home-component-modalA-contentB{
+  color: #ffffff;
+}
+
+
+.register-link button {
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+  border: none;
+  color: var(--color-text-light);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(9, 147, 150, 0.3);
+  transition: all 0.3s ease;
+}
+
+.register-link button:hover {
+  background: linear-gradient(45deg, var(--color-secondary), var(--color-primary));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(9, 147, 150, 0.4);
 }
 
 /* ---------------------------------------- Global Heading Styles ---------------------------------------- */
@@ -707,4 +780,3 @@ html {
 .home-component-faq-heading h2::after {
   right: -10px;
 }
-

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaFacebookF, FaInstagram, FaYoutube,/*FaTwitter, FaLinkedinIn*/ } from 'react-icons/fa';
 import Logo from '../../assets/logo.png';
+import SacLogo from '../../assets/sac_logo.png';
 
 const Footer = () => {
   return (
@@ -16,6 +17,9 @@ const Footer = () => {
         </div>
         <div className="footer-in-two">
           <Image src={Logo} alt="Company Logo" width={400} height={200} />
+        </div>
+        <div className="footer-in-two">
+          <Image src={SacLogo} alt="Company Logo" width={400} height={200} />
         </div>
         <div className="footer-in-three">
           <div className="footer-in-three-in-one">

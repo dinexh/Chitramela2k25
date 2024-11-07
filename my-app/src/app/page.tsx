@@ -4,14 +4,19 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Navigation from './components/Navigation/Navigation';
 import Footer from './components/Footer/Footer';
-import Modal from './components/Modal/Modal';
+import ModalA from './components/ModalA/ModalA';
+import ModalB from "./components/ModalB/ModalB";
 // data imports
 import { activities, Activity } from '@/app/data/activities';
 import { galleryImages } from '@/app/data/gallery';
 import { faqs, FAQ } from '@/app/data/faqs';
 import { aboutData } from '@/app/data/about';
+import {rules,Rule} from '@/app/data/rules';
 import { useScrollAnimation } from '@/app/components/useScrollAnimation';
+import { useRouter } from 'next/navigation';
+
 export default function Home() {
+
   const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -25,6 +30,7 @@ export default function Home() {
   const eventsRef = useScrollAnimation();
   const galleryRef = useScrollAnimation();
   const faqRef = useScrollAnimation();
+  const router = useRouter();
 
   useEffect(() => {
     if (videoRef.current) {
@@ -225,38 +231,119 @@ export default function Home() {
       <div className="home-component-footer">
         <Footer />
       </div>
-      {/*---------------------------------------- modal section for activities ----------------------------------------*/}
-      {selectedActivity && (
-        <Modal onClose={() => setSelectedActivity(null)}>
-          <div className="home-component-modal-content">
-            <div className="home-component-modal-image">
-              <Image  src={selectedActivity.image} alt={selectedActivity.title} 
-                width={600}
-                height={600}
+      {/*---------------------------------------- modalA section for activities ----------------------------------------*/}
+     {selectedActivity && (
+      <ModalA onClose={() => setSelectedActivity(null)}>
+        <div className="home-component-modalA-content">
+          {/* Content A: Image and Details side by side */}
+          <div className="home-component-modalA-contentA">
+            <div className="home-component-modalA-image">
+              <Image
+                src={selectedActivity.image}
+                alt={selectedActivity.title}
+                width={200}
+                height={200}
                 layout="responsive"
               />
             </div>
-            <div className="home-component-modal-text">
-              <h3 className="home-component-modal-title">{selectedActivity.title}</h3>
-              <p className="home-component-modal-description">{selectedActivity.description}</p>
+            <div className="home-component-modalA-text">
+              <h3 className="home-component-modalA-title">{selectedActivity.title}</h3>
+              <p className="home-component-modalA-description">{selectedActivity.description}</p>
               <p><strong>Date:</strong> {selectedActivity.date}</p>
               <p><strong>Time:</strong> {selectedActivity.time}</p>
               <p><strong>Venue:</strong> {selectedActivity.venue}</p>
               <p><strong>Fee:</strong> {selectedActivity.fee}</p>
             </div>
           </div>
-        </Modal>
-      )}
-      {/*---------------------------------------- modal section for about info ----------------------------------------*/}
+          
+          {/* Content B: Rules section */}
+          <div className="home-component-modalA-contentB">
+            <h1>Rules and Guidelines</h1>
+            {rules.find(r => r.id === selectedActivity.rulesId) ? (
+              <div className="rules-container">
+                {/* Title */}
+                <h3 className="rules-title" style={{color: "#ffffff"}}>
+                  {rules.find(r => r.id === selectedActivity.rulesId)?.title}
+                </h3>
+
+                {/* Eligibility */}
+                {rules.find(r => r.id === selectedActivity.rulesId)?.eligibility && (
+                  <div className="rules-section">
+                    <h4>Eligibility:</h4>
+                    <ul>
+                      {rules.find(r => r.id === selectedActivity.rulesId)?.eligibility?.map((rule, index) => (
+                        <li key={index}>{rule}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                {/* Submission Guidelines */}
+                {rules.find(r => r.id === selectedActivity.rulesId)?.submissionGuidelines && (
+                  <div className="rules-section">
+                    <h4>Submission Guidelines:</h4>
+                    <ul>
+                      {rules.find(r => r.id === selectedActivity.rulesId)?.submissionGuidelines?.map((guideline, index) => (
+                        <li key={index}>{guideline}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Judging Criteria */}
+                {rules.find(r => r.id === selectedActivity.rulesId)?.judgingCriteria && (
+                  <div className="rules-section">
+                    <h4>Judging Criteria:</h4>
+                    <ul>
+                      {rules.find(r => r.id === selectedActivity.rulesId)?.judgingCriteria?.map((criteria, index) => (
+                        <li key={index}>{criteria}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Content Guidelines */}
+                {rules.find(r => r.id === selectedActivity.rulesId)?.contentGuidelines && (
+                  <div className="rules-section">
+                    <h4>Content Guidelines:</h4>
+                    <ul>
+                      {rules.find(r => r.id === selectedActivity.rulesId)?.contentGuidelines?.map((guideline, index) => (
+                        <li key={index}>{guideline}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <p>No rules available for this activity.</p>
+            )}
+          </div>
+          
+          <div className="register-link">
+            <button 
+              onClick={() => {
+                setSelectedActivity(null);
+                router.push('/register');
+              }}
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </ModalA>
+)}
+
+
+      {/*---------------------------------------- modalB section for about info ----------------------------------------*/}
       {selectedAboutInfo !== null && (
-        <Modal onClose={() => setSelectedAboutInfo(null)}>
-          <div className="home-component-modal-content">
+        <ModalB onClose={() => setSelectedAboutInfo(null)}>
+          <div className="home-component-modalB-content">
             <h3>{aboutData[selectedAboutInfo].title}</h3>
-            <div className="modal-about-content">
+            <div className="modalB-about-content">
               <p>{aboutData[selectedAboutInfo].fullContent}</p>
             </div>
           </div>
-        </Modal>
+        </ModalB>
       )}
     </div>
   )

@@ -8,6 +8,7 @@ export interface Activity {
   venue: string;
   fee: string;
   category: string;
+  rulesId: string; // Link to the corresponding rules
 }
 
 export const activities: Activity[] = [
@@ -20,7 +21,8 @@ export const activities: Activity[] = [
     time: '10:00 AM - 4:00 PM',
     venue: 'Main Auditorium',
     fee: '$20',
-    category: 'Technical'
+    category: 'Technical',
+    rulesId: 'cine-quiz', // Link to the Cine Quiz rules
   },
   {
     id: 2,
@@ -31,7 +33,8 @@ export const activities: Activity[] = [
     time: '11:00 AM - 5:00 PM',
     venue: 'Exhibition Hall',
     fee: '$15',
-    category: 'Non-Technical'
+    category: 'Non-Technical',
+    rulesId: 'movie-poster-design', // Link to Movie Poster Design rules
   },
   {
     id: 3,
@@ -42,7 +45,8 @@ export const activities: Activity[] = [
     time: '9:00 AM - 3:00 PM',
     venue: 'Library Conference Room',
     fee: '$10',
-    category: 'Literary'
+    category: 'Literary',
+    rulesId: 'photography-contest', // Link to Photography Contest rules
   },
   {
     id: 4,
@@ -53,7 +57,8 @@ export const activities: Activity[] = [
     time: 'Various Times',
     venue: 'Multiple Locations',
     fee: '$5 per event',
-    category: 'Spot'
+    category: 'Spot',
+    rulesId: 'reel-making-contest', // Link to Reel Making Contest rules
   },
   {
     id: 5,
@@ -64,6 +69,7 @@ export const activities: Activity[] = [
     time: '9:00 AM - 6:00 PM',
     venue: 'Art Gallery',
     fee: '$12',
-    category: 'Art'
+    category: 'Art',
+    rulesId: 'short-film-contest', // Link to Short Film Contest rules
   }
 ];
