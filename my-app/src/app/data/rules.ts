@@ -1,4 +1,13 @@
-export const rules = [
+export interface Rule {
+    id: string;
+    title: string;
+    eligibility?: string[];
+    submissionGuidelines?: string[];
+    judgingCriteria?: string[];
+    contentGuidelines?: string[];
+  }
+
+export const rules: Rule[] = [
     {
         id: "short-film-contest",
         title: "Short Film Contest Rules and Regulations",
