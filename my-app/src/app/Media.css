@@ -37,19 +37,23 @@
   
     /* Events Section */
     .home-component-events {
-      padding: 2rem 0.5rem;
+      padding: 2rem 1rem;
     }
   
     .home-component-event-card {
-      width: 85%;
-      height: 350px;
+      width: calc(100% - 2rem);
+      aspect-ratio: 16/12;
       margin-right: 1rem;
     }
   
-    .home-component-events-nav-btn {
-      width: 2.5rem;
-      height: 2.5rem;
+    .home-component-event-card-title {
       font-size: 1.2rem;
+      padding: 0.4rem 0.8rem;
+    }
+  
+    .home-component-event-card-button {
+      padding: 0.8rem 1.5rem;
+      font-size: 0.9rem;
     }
   
     /* Gallery Section */
@@ -58,8 +62,13 @@
     }
   
     .home-component-gallery-image-wrapper {
-      width: 85vw;
-      height: 250px;
+      width: 70vw;
+      height: 300px;
+    }
+  
+    .home-component-gallery-scroll::before,
+    .home-component-gallery-scroll::after {
+      width: 30px;
     }
   
     /* FAQ Section */
@@ -91,8 +100,14 @@
     }
   
     .home-component-about-info-grid {
-      gap: 1rem;
-      padding: 0 0.5rem;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+  
+    .home-component-about-info-card {
+      max-width: 100%;
+      margin: 0 auto;
     }
   
     .about-info-content {
@@ -100,7 +115,8 @@
     }
   
     .about-info-content h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
     }
   
     .about-info-content p {
@@ -191,9 +207,74 @@
     .home-component-faq-heading h2 {
       font-size: 1.2rem;
     }
+  
+    /* Gallery Section Improvements */
+    .home-component-gallery-image-wrapper {
+      width: 85vw;
+      height: 250px;
+    }
+  
+    .home-component-gallery-scroll::before,
+    .home-component-gallery-scroll::after {
+      width: 20px;
+    }
+  
+    /* About Info Section Improvements */
+    .home-component-about-info {
+      padding: 2rem 0.8rem;
+    }
+  
+    .home-component-about-info-grid {
+      gap: 1.2rem;
+    }
+  
+    .about-info-content {
+      padding: 1.2rem;
+    }
+  
+    .about-info-content p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+  
+    /* Events/Activities Section Improvements */
+    .home-component-event-card {
+      width: calc(100% - 1rem);
+      aspect-ratio: 16/14;
+    }
+  
+    .home-component-event-card-overlay {
+      padding: 1.5rem;
+    }
+  
+    .home-component-events-nav {
+      margin-top: 1.5rem;
+    }
   }
   
-  /* Add orientation specific styles */
+  /* Add intermediate breakpoint for better tablet support */
+  @media screen and (min-width: 481px) and (max-width: 1024px) {
+    .home-component-gallery-image-wrapper {
+      width: 60vw;
+      height: 350px;
+    }
+  
+    .home-component-about-info-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  
+    .home-component-event-card {
+      width: calc(50% - 1.5rem);
+      aspect-ratio: 16/14;
+    }
+  
+    .home-component-events-content {
+      gap: 1.5rem;
+    }
+  }
+  
+  /* Add landscape orientation improvements */
   @media screen and (max-height: 480px) and (orientation: landscape) {
     .home-component-hero {
       height: 100vh;
@@ -211,10 +292,32 @@
     }
   
     .home-component-gallery-image-wrapper {
-      height: 180px;
+      height: 200px;
+      width: 50vw;
     }
   
     .home-component-event-card {
-      height: 250px;
+      aspect-ratio: 16/9;
+      height: auto;
+    }
+  
+    .home-component-about-info-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  
+    .about-info-content {
+      padding: 1rem;
+    }
+  
+    .about-info-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .about-info-content p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
     }
   }
