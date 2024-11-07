@@ -3,13 +3,20 @@
 /* Define color variables */
 :root {
   --color-background: #000000; /* Black background */
-  --color-primary: #001F3F ; /* Bright red */
-  --color-secondary: #870707; /* Dark navy blue */
+  --color-primary: #001F3F; /* Dark navy blue */
+  --color-secondary: #870707; /* Dark red */
   --color-accent: #FFFFFF; /* White */
   --color-text-light: #FFFFFF; /* Light text color */
   --color-text-dark: #000000; /* Dark text color */
   --color-border: rgba(255, 255, 255, 0.1); /* Border color */
   --color-shadow: rgba(0, 0, 0, 0.5); /* Shadow color */
+  --color-teal: #0A9396; /* Teal accent color */
+  --color-scrollbar: #0a5096; /* Scrollbar color */
+  --color-scrollbar-hover: #005F73; /* Scrollbar hover color */
+  --color-card-bg: #1A1A1A; /* Dark card background */
+  --color-border-dark: #333333; /* Dark border color */
+  --color-overlay: rgba(255, 255, 255, 0.05); /* Light overlay */
+  --color-overlay-hover: rgba(9, 147, 150, 0.15); /* Teal overlay for hover */
 }
 
 * {
@@ -86,11 +93,11 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0a5096;
+  background: var(--color-scrollbar);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #005F73;
+  background: var(--color-scrollbar-hover);
 }
 
 /* ---------------------------------------- hero section ---------------------------------------- */
@@ -167,7 +174,7 @@ html {
 
 .home-component-counter-card:hover {
   transform: skew(-3deg) translateY(-5px);
-  border-color: #0A9396;
+  border-color: var(--color-teal);
   box-shadow: 0 10px 30px var(--color-shadow);
 }
 
@@ -278,7 +285,7 @@ html {
 }
 
 .home-component-gallery-image-wrapper:hover {
-  border-color: #0A9396;
+  border-color: var(--color-teal);
   box-shadow: 0 10px 30px var(--color-shadow);
 }
 
@@ -332,7 +339,7 @@ html {
 }
 
 .home-component-faq-item:hover {
-  border-color: #0A9396;
+  border-color: var(--color-teal);
   box-shadow: 0 10px 30px rgba(9, 147, 150, 0.15);
   transform: translateY(-5px);
 }
@@ -541,7 +548,7 @@ html {
 
 .home-component-about-info-card:hover {
   transform: translateY(-5px);
-  border-color: #0A9396;
+  border-color: var(--color-teal);
   box-shadow: 0 10px 30px rgba(9, 147, 150, 0.15);
 }
 
@@ -604,7 +611,7 @@ html {
 }
 
 .home-component-modalB-content h3 {
-  color: #0A9396;
+  color: var(--color-teal);
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
@@ -634,7 +641,7 @@ html {
 }
 
 .modalB-about-content::-webkit-scrollbar-thumb {
-  background: #0A9396;
+  background: var(--color-teal);
   border-radius: 4px;
 }
 
@@ -681,7 +688,7 @@ html {
 }
 
 .home-component-modalA-title {
-  color: #0A9396;
+  color: var(--color-teal);
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -761,7 +768,7 @@ html {
 .home-component-faq-heading h2::after {
   content: '✦';
   position: absolute;
-  color: #eaff00;
+  color: var(--color-yellow);
   font-size: 1.5rem;
 }
 

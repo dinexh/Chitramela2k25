@@ -11,7 +11,7 @@ import { activities, Activity } from '@/app/data/activities';
 import { galleryImages } from '@/app/data/gallery';
 import { faqs, FAQ } from '@/app/data/faqs';
 import { aboutData } from '@/app/data/about';
-import {rules,Rule} from '@/app/data/rules';
+import {rules} from '@/app/data/rules';
 import { useScrollAnimation } from '@/app/components/useScrollAnimation';
 import { useRouter } from 'next/navigation';
 
