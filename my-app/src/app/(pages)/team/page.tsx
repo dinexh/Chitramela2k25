@@ -1,7 +1,7 @@
 "use client";
 import './Team.css';
 import React from 'react';
-import Pic from "../../assets/TeamPerson.webp";
+import Pic from "../../assets/TeamPerson.png";
 import { FaInstagram, FaTelegram } from 'react-icons/fa';
 import Footer from '@/app/components/Footer/Footer';
 import Image from 'next/image';
@@ -64,7 +64,7 @@ const Team = () => {
                 <div className="TeamPage-Profile">
                 {teamMembers.map((member) => (
                 <div key={member.id} className="TeamPage-content-in-three-in-one">
-                  <Image src={member.image} alt={member.name} width={200} height={200} />
+                  <Image src={Pic} alt={member.name} width={200} height={200} />
                   <div className="description">
                     <p>{member.name}</p>
                     <p>{member.designation}</p>
