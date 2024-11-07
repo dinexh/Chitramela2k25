@@ -48,6 +48,51 @@
   width: 100%;
 }
 
+
+/* ---------------------------------------- Scroll Behavior ---------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+.animate-in {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0a5096;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #005F73;
+}
+
 /* ---------------------------------------- hero section ---------------------------------------- */
 .home-component-hero {
   /* background-color: var(--color-primary); */
@@ -112,16 +157,17 @@
 
 .home-component-counter-card {
   background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(0, 31, 63, 0.1));
-  border: 2px solid var(--color-border);
+  border: 1px solid rgba(9, 147, 150, 0.3);
   box-shadow: 0 0 20px var(--color-shadow);
   transform: skew(-3deg);
+  backdrop-filter: blur(10px);
   padding: 2rem;
   transition: transform 0.3s ease;
 }
 
 .home-component-counter-card:hover {
   transform: skew(-3deg) translateY(-5px);
-  border-color: var(--color-secondary);
+  border-color: #0A9396;
   box-shadow: 0 10px 30px var(--color-shadow);
 }
 
@@ -173,12 +219,50 @@
 .home-component-gallery-scroll {
   width: 100%;
   overflow: hidden;
+  position: relative;
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 2;
+  }
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-background), transparent);
+  }
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-background), transparent);
+  }
 }
 
 .home-component-gallery-content {
   display: flex;
   gap: 1rem;
   width: max-content;
+  animation: scrollGallery 45s linear infinite;
+  /* Pause on hover */
+  &:hover {
+    animation-play-state: paused;
+  }
+  /* Create a copy of images for seamless loop */
+  &::after {
+    content: '';
+    display: block;
+    width: calc(100% + 1rem);
+  }
+}
+
+@keyframes scrollGallery {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* This should be adjusted based on your content width */
+    transform: translateX(calc(-50% - 0.5rem));
+  }
 }
 
 .home-component-gallery-image-wrapper {
@@ -196,8 +280,8 @@
 }
 
 .home-component-gallery-image-wrapper:hover {
-  transform: translateY(-5px);
-  border-color: var(--color-secondary);
+  /* transform: translateY(-5px); */
+  border-color: #0A9396;
   box-shadow: 0 10px 30px var(--color-shadow);
 }
 
@@ -206,7 +290,7 @@
   height: 100%;
   object-fit: fill;
   transition: transform 0.3s ease;
-  /* aspect-rati */
+
 }
 
 .home-component-gallery-image:hover {
@@ -221,6 +305,7 @@
 }
 
 .home-component-faq-content {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -230,8 +315,8 @@
 }
 
 .home-component-faq-item {
-  background: linear-gradient(135deg, rgba(255, 87, 51, 0.1), rgba(0, 18, 25, 0.2));
-  border: 1px solid rgba(255, 87, 51, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(9, 147, 150, 0.3);
   padding: 1rem;
   transition: all 0.3s ease;
   border-radius: 15px;
@@ -244,10 +329,15 @@
   width: 60%;
 }
 
+.home-component-faq-item h3{
+  width: 100%;
+  text-align: center;
+}
+
 .home-component-faq-item:hover {
-  border-color: var(--color-secondary);
-  box-shadow: 0 10px 30px rgba(255, 87, 51, 0.15);
-  transform: translateX(5px);
+  border-color: #0A9396;
+  box-shadow: 0 10px 30px rgba(9, 147, 150, 0.15);
+  transform: translateY(-5px);
 }
 
 .home-component-faq-question {
@@ -269,7 +359,8 @@
 .home-component-faq-answer.open {
   max-height: 500px;
   padding: 1.5rem;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+
 }
 
 /* ---------------------------------------- Events Section Enhancement ---------------------------------------- */
@@ -308,7 +399,7 @@
 }
 
 .home-component-event-card:hover {
-  transform: perspective(1000px) rotateY(5deg) translateY(-10px);
+  transform: /*perspective(1000px) rotateY(5deg)*/ translateY(-10px);
   border-color: var(--color-secondary);
   box-shadow: 
     0 15px 35px var(--color-shadow),
@@ -377,7 +468,7 @@
 }
 
 .home-component-events-nav-btn {
-  background-color: var(--color-primary);
+  background: linear-gradient(45deg, var(--color-secondary), var(--color-primary));
   color: var(--color-text-light);
   border: none;
   border-radius: 50%;
@@ -392,117 +483,8 @@
 }
 
 .home-component-events-nav-btn:hover {
-  background-color: var(--color-secondary);
-}
+  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
 
-/* ---------------------------------------- About Section Enhancement ---------------------------------------- */
-.home-component-about {
-  padding: 4rem 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.home-component-about::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.1) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.home-component-about-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: 1400px;
-  margin: 3rem auto 0;
-  padding: 0 1rem;
-}
-
-.home-component-about-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(9, 147, 150, 0.2);
-  border-radius: 20px;
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.home-component-about-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #0A9396, transparent);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
-}
-
-.home-component-about-card:hover::before {
-  transform: translateX(100%);
-}
-
-.home-component-about-card:hover {
-  transform: translateY(-10px);
-  border-color: var(--color-secondary);
-  box-shadow: 0 10px 30px rgba(9, 147, 150, 0.2);
-}
-
-.about-card-icon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  display: inline-block;
-  padding: 1rem;
-  background: rgba(9, 147, 150, 0.1);
-  border-radius: 50%;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.home-component-about-card h3 {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.home-component-about-card p {
-  color: var(--color-text-light);
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.9;
-}
-
-.about-card-button {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  background: transparent;
-  border: 2px solid #0A9396;
-  color: var(--color-secondary);
-  border-radius: 25px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-card-button:hover {
-  background: #0A9396;
-  color: #E9D8A6;
 }
 
 /* ---------------------------------------- About Info Section Enhancement ---------------------------------------- */
@@ -512,8 +494,8 @@
   overflow: hidden;
 }
 
-.home-component-about-info::before {
-  content: '';
+/* .home-component-about-info::before {
+   content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -522,7 +504,7 @@
   background: url('/assets/film-pattern.png') repeat;
   opacity: 0.1;
   pointer-events: none;
-}
+}  */
 
 .home-component-about-info-grid {
   display: grid;
@@ -725,3 +707,4 @@
 .home-component-faq-heading h2::after {
   right: -10px;
 }
+

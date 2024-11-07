@@ -18,7 +18,7 @@ export const useScrollAnimation = (resetOnExit = false) => {
       },
       {
         threshold: 0.1,
-        rootMargin: '0px'
+        rootMargin: '0px',
       }
     );
 

@@ -1,5 +1,5 @@
 'use client'
-
+import "./Media.css"
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Navigation from './components/Navigation/Navigation';
