@@ -1,0 +1,9 @@
+services:
+  next-app:
+    build:
+      context: .  # Ensure this is set to the current directory
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
