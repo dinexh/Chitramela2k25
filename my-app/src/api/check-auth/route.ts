@@ -1,7 +1,13 @@
 import { NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
+interface ErrorResponse {
+  error: string;
+}
 
-export async function GET(request: Request) {
+interface AuthResponse {
+  authenticated: boolean;
+}
+export async function GET(request: Request): Promise<NextResponse<ErrorResponse | AuthResponse>> {
   try {
     const token = request.headers.get('cookie')?.split('token=')[1]?.split(';')[0];
 
@@ -16,7 +22,8 @@ export async function GET(request: Request) {
     );
 
     return NextResponse.json({ authenticated: true }, { status: 200 });
-  } catch (error) {
+  } catch {
+    // Optional: log error if debugging
     return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
   }
-} 
+}

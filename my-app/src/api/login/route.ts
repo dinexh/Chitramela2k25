@@ -8,7 +8,6 @@ interface AdminRow extends RowDataPacket {
   username: string;
   password: string;
 }
-
 export async function POST(request: Request) {
   try {
     console.log('Login attempt started');
@@ -56,7 +55,7 @@ export async function POST(request: Request) {
 
       const token = jwt.sign(
         { id: admin.id, username: admin.username },
-        process.env.JWT_SECRET!,
+        process.env.JWT_SECRET || 'default_secret',
         { expiresIn: '1d' }
       );
       console.log('JWT created successfully');
@@ -80,7 +79,7 @@ export async function POST(request: Request) {
       connection.release();
     }
 
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Login error:', error);
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
     console.error('Error details:', errorMessage);
