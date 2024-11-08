@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import './Navigation.css';
 import Image from 'next/image';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/newlogo.png';
 
 export default function Navigation() {
   const [isVisible, setIsVisible] = useState(false)
