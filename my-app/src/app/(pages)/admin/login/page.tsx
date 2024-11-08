@@ -22,36 +22,30 @@ export default function LoginPage() {
 
     try {
       console.log('Attempting login...');
-      const res = await fetch('/api/login', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
-        credentials: 'include',
       });
 
-      const data = await res.json();
-      console.log('Login response:', { status: res.status, data });
-
-      if (!res.ok) {
-        throw { 
-          error: data.error || 'Login failed',
-          details: data.details 
-        } as LoginError;
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
+      const data = await response.json();
+      
       if (data.success) {
         console.log('Login successful, redirecting...');
         router.push('/admin/dashboard');
         router.refresh();
       } else {
-        throw { error: 'Login response missing success flag' } as LoginError;
+        setError(data.error || 'Login failed');
       }
     } catch (error) {
       console.error('Login error:', error);
-      const err = error as LoginError;
-      setError(err.details ? `${err.error}: ${err.details}` : err.error || 'An error occurred');
+      setError('An error occurred while trying to log in. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -94,4 +88,4 @@ export default function LoginPage() {
       </form>
     </div>
   );
-} 
+}
