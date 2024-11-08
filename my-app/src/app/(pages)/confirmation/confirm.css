@@ -1,10 +1,10 @@
 .profile-box {
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--color-card-bg);
     border-radius: 20px;
     padding: 24px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 32px var(--color-shadow);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    border: 1px solid var(--color-border);
     margin: 20px 0;
   }
   
@@ -16,18 +16,18 @@
     display: flex;
     margin-bottom: 12px;
     padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    border-bottom: 1px solid var(--color-border);
   }
   
   .detail-label {
     font-weight: 600;
     width: 150px;
-    color: #FFD700;
+    color: var(--color-accent);
   }
   
   .detail-value {
     flex: 1;
-    color: #fff;
+    color: var(--color-text-light);
   }
   
   .action-buttons {
@@ -47,25 +47,26 @@
   
   .edit-btn {
     background: transparent;
-    border: 2px solid #FFD700;
-    color: #FFD700;
+    border: 2px solid var(--color-teal);
+    color: var(--color-accent);
   }
   
   .confirm-btn {
-    background: #FFD700;
-    color: #000;
+    background: var(--color-secondary);
+    color: var(--color-text-light);
   }
   
   .edit-btn:hover {
-    background: rgba(255, 215, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 0 15px var(--color-shadow);
   }
   
   .confirm-btn:hover {
-    background: #FFC800;
+    background: var(--color-accent);
+    color: var(--color-text-dark);
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 20px var(--color-shadow);
   }
   
   
