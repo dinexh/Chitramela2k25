@@ -1,88 +1,122 @@
-// src/app/(pages)/auth/login/page.tsx
-'use client';
-import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { toast, Toaster } from 'react-hot-toast';
-
-const LoginPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+"use client";
+import React, { useEffect } from "react";
+import axios from "axios";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { usePathname } from 'next/navigation'
+import { toast } from "react-hot-toast";
+import './login.css';
+const Login = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
+  const pathname = usePathname()
 
-  useEffect(() => {
-    const errorMessage = searchParams.get('error');
-    if (errorMessage) {
-      toast.error(errorMessage);
-    }
-  }, [searchParams]);
+  const [userData, setUserData] = useState({
+    username: "",
+    password: "",
+  });
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+
+  const handleLogin = async (e: any) => {
     e.preventDefault();
+
+    if (!userData.username || !userData.password) {
+      toast.error("Please fill all fields");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/auth/login', {
-        method: 'POST',
+      const response = await axios.post("/api/auth/login", userData, {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        withCredentials: true,
       });
 
-      const data = await res.json();
+      if (response.status === 200) {
+        const role = response.data.role;
 
-      if (res.ok) {
-        toast.success('Login successful!');
-        router.push('/auth/dashboard');
-      } else {
-        toast.error(data.error || 'Login failed. Please try again.');
+        setIsLoading(false);
+
+        const user = {
+          id: response.data.id,
+          name: response.data.name,
+          username: response.data.username,
+          role: response.data.role,
+        };
+  
+        localStorage.setItem("user", JSON.stringify(user));
+        toast.success("Login successful");
+
+        // Use router.push without await for faster perceived navigation
+        switch (role) {
+          case "Admin":
+            router.push("/auth/dashboard");
+            break;
+          case "club_lead":
+            router.push("/lead/home");
+            break;
+          default:
+            router.push("/");
+            break;
+        }
       }
-    } catch (err) {
-      toast.error('Network error occurred. Please try again.');
-      console.error('Login error:', err);
-    } finally {
+      else {
+        setIsLoading(false);
+        toast.error(response.data.message);
+      }
+
+    } catch (error: any) {
       setIsLoading(false);
+      toast.error(error.response.data.message);
     }
   };
 
+  const handleInput = (e: any) => {
+    const { name, value } = e.target;
+    setUserData({
+      ...userData,
+      [name]: value,
+    });
+  };
+
   return (
-    <div className="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-      <Toaster position="top-right" />
-      <form onSubmit={handleLogin} className="space-y-4">
-        <div className="mb-4">
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Username"
-            required
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
-          />
+    <div className="LoginComponent">
+      <div className="LoginComponent-in">
+        <div className="Login-one">
+          <h1>Chitramela Dashboard</h1>
         </div>
-        <div className="mb-4">
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-            className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            disabled={isLoading}
-          />
+        <div className="Login-two">
+          <div className="Login-two-in">
+            <div className="Login-in-one">
+              <input
+                type="text"
+                value={userData.username}
+                onChange={handleInput}
+                name="username"
+                placeholder="Username"
+              />
+            </div>
+            <div className="Login-in-two">
+              <input
+                type="password"
+                value={userData.password}
+                onChange={handleInput}
+                name="password"
+                placeholder="Password"
+              />
+            </div>
+            <div className="Login-in-three">
+              <button onClick={handleLogin}>Login</button>
+            </div>
+          </div>
         </div>
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 disabled:bg-blue-300 transition-colors"
-        >
-          {isLoading ? 'Logging in...' : 'Login'}
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
 
-export default LoginPage;
+export default Login;
