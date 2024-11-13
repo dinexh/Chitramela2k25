@@ -1,125 +1,121 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)),
+              url('../../../../../src//app/assets//login.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+.login-container-in {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  padding: 2.5rem;
+  border-radius: 12px;
+  width: 20%;
+}
+.login-container-in-one {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.login-container-in-two-heading h2 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.input-group input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+.input-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #D4AF37;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.login-button {
+  width: 100%;
+  background: #D4AF37;
+  color: #000;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+}
+
+.login-button:hover {
+  background: #E5C100;
+  transform: translateY(-1px);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+/* Animation for form elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  .LoginComponent {
-    width: 100%;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .LoginComponent-in {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .Login-one {
-    width: 50%;
-    text-align: center;
-    padding: 2rem;
-  }
-  
-  .Login-two {
-    width: 50%;
-  }
-  
-  .Login-two-in {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-  }
-  
-  .Login-in-one {
-    width: 50%;
-    margin: auto;
-  }
-  
-  .Login-in-one input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 0.1px solid gray;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .Login-in-two {
-    width: 50%;
-    margin: auto;
-  }
-  
-  .Login-in-two input {
-    width: 100%;
-    padding: 0.8rem;
-    border: 0.1px solid gray;
-    border-radius: 5px;
-    font-size: 1rem;
-  }
-  
-  .Login-in-three {
-    width: 50%;
-    margin: auto;
-  }
-  
-  .Login-in-three button {
-    width: 100%;
-    padding: 0.8rem;
-    border: 0.1px solid gray;
-    border-radius: 5px;
-    background-color: rgb(16, 19, 24);
-    color: rgb(249, 249, 251);
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  
-  @media all and (max-width: 500px) {
-  
-    .LoginComponent-in {
-      padding: 1rem;
-      height: 80vh;
-    }
-  
-    .Login-one {
-      width: 90%;
-      padding: 1rem 0;
-    }
-  
-    .Login-one h1 {
-      font-size: 1.5rem; /* Slightly reduce the font size for headings */
-    }
-  
-    /* Input and Button Wrapper */
-    .Login-two {
-      width: 90%;
-    }
-  
-    .Login-two-in {
-      gap: 0.8rem;
-    }
-  
-    /* Username and Password Input Fields */
-    .Login-in-one,
-    .Login-in-two,
-    .Login-in-three {
-      width: 100%;
-    }
-  
-    .Login-in-one input,
-    .Login-in-two input {
-      padding: 0.6rem;
-      font-size: 0.9rem; /* Slightly smaller font for inputs */
-    }
-  
-    /* Login Button Styling */
-    .Login-in-three button {
-      padding: 0.7rem;
-      font-size: 1rem;
-    }
-  }
-  
+}
+
+.login-container-in-one,
+.login-container-in-two-heading,
+.input-group,
+.login-button {
+  animation: fadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+.login-container-in-one {
+  animation-delay: 0.2s;
+}
+
+.login-container-in-two-heading {
+  animation-delay: 0.4s;
+}
+
+.input-group:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.input-group:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.login-button {
+  animation-delay: 1s;
+}

@@ -1,5 +1,6 @@
 "use client";
-
+import Image from "next/image";
+import logo from "@/app/assets/newlogo.png";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from 'react-hot-toast';
@@ -44,31 +45,40 @@ export default function Login() {
   return (
     <div className="login-container">
       <Toaster position="top-center" />
-      <div className="login-box">
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Username"
-              required
-            />
+      <div className="login-container-in">
+        <div className="login-container-in-one">
+          <Image src={logo} alt="Chitramela Logo" width={120} height={50} />  
+        </div>  
+        <div className="login-container-in-two">
+          <div className="login-container-in-two-heading">
+            <h2>Chitramela Admin Portal</h2>
           </div>
-          <div className="input-group">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              required
-            />
+          <div className="login-container-in-two-form"> 
+            <form onSubmit={handleSubmit}>
+              <div className="input-group">
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder="Username"
+                  required
+                />
+              </div>
+              <div className="input-group">
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <button type="submit" className="login-button">
+                Login
+              </button>
+            </form>
           </div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
-        </form>
+        </div>
       </div>
     </div>
   );
