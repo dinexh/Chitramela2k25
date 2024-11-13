@@ -1,35 +1,41 @@
 import mysql from "mysql2/promise";
 
 const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'localhost',
+  host: 'localhost',
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'your_password',
+  password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME || 'chitramela',
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
 });
 
-// Test the connection
-pool.getConnection()
-    .then(async connection => {
-        console.log('Database connected successfully');
-        // Test a simple query
-        try {
-            const [result] = await connection.query('SELECT 1');
-            console.log('Query test successful');
-        } catch (err) {
-            console.error('Query test failed:', err);
-        }
-        connection.release();
-    })
-    .catch(err => {
-        console.error('Database connection error:', err);
-        console.error('Connection config:', {
-            host: process.env.DB_HOST || 'localhost',
-            user: process.env.DB_USER || 'root',
-            database: process.env.DB_NAME || 'chitramela',
-        });
+// Test database connection immediately
+const testConnection = async () => {
+  try {
+    const connection = await pool.getConnection();
+    console.log('✅ Database connection successful');
+    
+    // Test if we can query the users table
+    const [rows] = await connection.query('SELECT COUNT(*) as count FROM users');
+    console.log('✅ Users table accessible:', rows);
+    
+    connection.release();
+  } catch (error: any) {
+    console.error('❌ Database connection failed');
+    console.error('Error code:', error.code);
+    console.error('Error number:', error.errno);
+    console.error('Error message:', error.message);
+    console.error('Error stack:', error.stack);
+    
+    console.error('Connection details:', {
+      host: 'localhost',
+      user: process.env.DB_USER || 'root',
+      database: process.env.DB_NAME || 'chitramela',
     });
+  }
+};
+
+testConnection();
 
 export { pool };

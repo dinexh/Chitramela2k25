@@ -1,8 +1,9 @@
--- Create database
+-- Drop database if exists and create new one
+DROP DATABASE IF EXISTS chitramela;
 CREATE DATABASE chitramela;
 USE chitramela;
 
--- Users table
+-- Create users table
 CREATE TABLE users (
     id INT NOT NULL AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL UNIQUE, 
@@ -16,7 +17,7 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
--- Insert demo admin user
+-- Insert test users
 INSERT INTO users (username, name, password, email, role, active) 
 VALUES 
 ('admin', 'Administrator', 'admin123', 'admin@chitramela.com', 'Admin', 1),

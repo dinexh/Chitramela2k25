@@ -40,89 +40,77 @@ async function isAuth(username: string, password: string) {
 
 export async function POST(req: NextRequest) {
     try {
-        console.log('Login request received');
-        
         const body = await req.json();
-        console.log('Request body:', { ...body, password: '[REDACTED]' });
+        console.log('👉 Login attempt for:', body.username);
 
         const { username, password } = body;
 
-        if (!username || !password) {
-            console.log('Missing credentials');
+        try {
+            const [rows] = await pool.query(
+                'SELECT * FROM users WHERE username = ? AND password = ?',
+                [username, password]
+            );
+            console.log('Query result:', rows);
+
+            const users = rows as any[];
+            
+            if (users.length === 0) {
+                return NextResponse.json(
+                    { message: "Invalid credentials" },
+                    { status: 401 }
+                );
+            }
+
+            const user = users[0];
+            console.log('User found:', { ...user, password: '[REDACTED]' });
+
+            // Set cookies
+            const cookieStore = cookies();
+            cookieStore.set("authenticated", "true", {
+                sameSite: "lax",
+                secure: false,
+                httpOnly: false,
+                expires: new Date(Date.now() + 15 * 60 * 1000),
+            });
+
+            cookieStore.set("role", "Admin", {
+                sameSite: "lax",
+                secure: false,
+                httpOnly: false,
+                expires: new Date(Date.now() + 15 * 60 * 1000),
+            });
+
+            return NextResponse.json({
+                message: "Authenticated",
+                user: {
+                    id: user.id,
+                    username: user.username,
+                    name: user.name,
+                    role: user.role,
+                }
+            });
+
+        } catch (dbError: any) {
+            console.error('Database error:', {
+                message: dbError.message,
+                code: dbError.code,
+                errno: dbError.errno,
+                sqlMessage: dbError.sqlMessage,
+                sqlState: dbError.sqlState
+            });
             return NextResponse.json(
-                { message: "Username and password are required" },
-                { status: 400 }
+                { 
+                    message: "Database error", 
+                    details: dbError.message 
+                },
+                { status: 500 }
             );
         }
-
-        console.log('Attempting authentication');
-        const user = await isAuth(username, password);
-
-        if (!user) {
-            console.log('Authentication failed');
-            return NextResponse.json(
-                { message: "Invalid credentials" },
-                { status: 401 }
-            );
-        }
-
-        if (!user.active) {
-            console.log('Account suspended');
-            return NextResponse.json(
-                { message: "Account suspended" },
-                { status: 403 }
-            );
-        }
-
-        console.log('Setting cookies');
-        const expirationTime = new Date();
-        expirationTime.setTime(expirationTime.getTime() + 15 * 60 * 1000);
-
-        const cookieStore = cookies();
-        cookieStore.set("authenticated", "true", {
-            sameSite: "lax",
-            secure: false,
-            httpOnly: false,
-            expires: expirationTime,
-        });
-
-        cookieStore.set("role", "Admin", {
-            sameSite: "lax",
-            secure: false,
-            httpOnly: false,
-            expires: expirationTime,
-        });
-
-        console.log('Authentication successful');
-        return NextResponse.json({
-            message: "Authenticated",
-            id: user.id,
-            username: user.username,
-            name: user.name,
-            role: user.role,
-        });
 
     } catch (error: any) {
-        console.error('Login error:', error);
-        console.error('Error details:', {
-            message: error.message,
-            stack: error.stack,
-            code: error.code,
-            errno: error.errno,
-            sqlMessage: error.sqlMessage,
-            sqlState: error.sqlState
-        });
-        
+        console.error('Server error:', error);
         return NextResponse.json(
-            { 
-                message: "Internal server error",
-                error: error.message,
-                details: process.env.NODE_ENV === 'development' ? {
-                    code: error.code,
-                    errno: error.errno,
-                    sqlMessage: error.sqlMessage
-                } : undefined
-            },
+            { message: "Server error", details: error.message },
             { status: 500 }
         );
     }
