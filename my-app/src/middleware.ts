@@ -1,63 +1,35 @@
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-
-import { verifyJWT } from "./lib/verfiyJWT";
 
 export async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
-
-  const isPublic = "/";
-
   const cookieStore = cookies();
+  
+  const role = cookieStore.get("role")?.value;
+  const isAuthenticated = cookieStore.get("authenticated")?.value === "true";
 
-  const JWT = cookieStore.get("JWT")?.value;
+  // Allow home page access without authentication
+  if (path === "/") {
+    return NextResponse.next();
+  }
 
-  const decodedToken = jwt.decode(cookieStore.get("jwt")?.value as string, {
-    complete: true,
-  });
-
-  const userData: any = decodedToken?.payload;
-
-  const { valid, payload } = await verifyJWT();
-
-  console.log(userData)
-  const role = userData?.role;
-
-  if (!valid && path !== isPublic && path !== "/auth/login") {
+  // Handle authentication
+  if (!isAuthenticated && path !== "/auth/login") {
     const url = req.nextUrl.clone();
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);  
   }
 
-  if (path === "/auth/login" && valid) {
-
-    if (role === "Admin") {
-      const url = req.nextUrl.clone();
-      url.pathname = "/admin/home";
-      return NextResponse.redirect(url)
-    }
-    else {
-      const url = req.nextUrl.clone();
-      url.pathname = "/lead/home";
-      return NextResponse.redirect(url)
-    }
+  // Redirect authenticated users trying to access login
+  if (path === "/auth/login" && isAuthenticated) {
+    const url = req.nextUrl.clone();
+    url.pathname = "/admin/Dashboard";
+    return NextResponse.redirect(url);
   }
 
-  // admin pages
-  if (path.includes("/admin") && role !== "Admin") {
-    return NextResponse.json(
-      { message: "You are not authorized to view this page" },
-      { status: 401 }
-    );
-  }
-  // lead pages
-  else if (
-    path.includes("/lead") &&
-    role !== "club_lead" &&
-    role !== "Admin"
-  ) {
+  // Check admin authorization for admin routes
+  if (path.startsWith("/admin") && role !== "Admin") {
     return NextResponse.json(
       { message: "You are not authorized to view this page" },
       { status: 401 }
@@ -69,5 +41,5 @@ export async function middleware(req: NextRequest) {
 
 // Supports both a single string value or an array of matchers
 export const config = {
-  matcher: ["/", "/", "/auth/login", "/admin/:path*", "/lead/:path*"],
+  matcher: ["/", "/auth/login", "/admin/:path*"],
 };

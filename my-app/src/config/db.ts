@@ -1,21 +1,35 @@
-import mysql2 from 'mysql2';
+import mysql from "mysql2/promise";
 
-export const pool = mysql2.createPool( {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    waitForConnections: true,
-    connectionLimit: 20,
-    queueLimit: 0,
-    multipleStatements: true,
-}).promise();
+const pool = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'your_password',
+  database: process.env.DB_NAME || 'chitramela',
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0,
+});
 
+// Test the connection
 pool.getConnection()
-    .then( connection => {
-        console.log(`Connected to MySQL database ${ process.env.DB_NAME } on thread ${ connection.threadId }`)
+    .then(async connection => {
+        console.log('Database connected successfully');
+        // Test a simple query
+        try {
+            const [result] = await connection.query('SELECT 1');
+            console.log('Query test successful');
+        } catch (err) {
+            console.error('Query test failed:', err);
+        }
         connection.release();
     })
-    .catch( error => {
-        console.log(`Error connecting to MySQL database error: ${ error.message }`)
+    .catch(err => {
+        console.error('Database connection error:', err);
+        console.error('Connection config:', {
+            host: process.env.DB_HOST || 'localhost',
+            user: process.env.DB_USER || 'root',
+            database: process.env.DB_NAME || 'chitramela',
+        });
     });
+
+export { pool };

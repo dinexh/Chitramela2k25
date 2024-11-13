@@ -1,122 +1,77 @@
 "use client";
-import React, { useEffect } from "react";
-import axios from "axios";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { usePathname } from 'next/navigation'
-import { toast } from "react-hot-toast";
-import './login.css';
-const Login = () => {
+import toast, { Toaster } from 'react-hot-toast';
+import "./login.css";
+
+export default function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
-  const pathname = usePathname()
 
-  const [userData, setUserData] = useState({
-    username: "",
-    password: "",
-  });
-
-  const [isLoading, setIsLoading] = useState(false);
-
-
-  const handleLogin = async (e: any) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!userData.username || !userData.password) {
-      toast.error("Please fill all fields");
-      return;
-    }
-
-    setIsLoading(true);
-
     try {
-      const response = await axios.post("/api/auth/login", userData, {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        withCredentials: true,
+        body: JSON.stringify({
+          username,
+          password,
+        }),
       });
 
-      if (response.status === 200) {
-        const role = response.data.role;
+      const data = await res.json();
 
-        setIsLoading(false);
-
-        const user = {
-          id: response.data.id,
-          name: response.data.name,
-          username: response.data.username,
-          role: response.data.role,
-        };
-  
-        localStorage.setItem("user", JSON.stringify(user));
-        toast.success("Login successful");
-
-        // Use router.push without await for faster perceived navigation
-        switch (role) {
-          case "Admin":
-            router.push("/auth/dashboard");
-            break;
-          case "club_lead":
-            router.push("/lead/home");
-            break;
-          default:
-            router.push("/");
-            break;
-        }
-      }
-      else {
-        setIsLoading(false);
-        toast.error(response.data.message);
+      if (!res.ok) {
+        // Show error toast
+        toast.error(data.message || 'Login failed');
+        return;
       }
 
-    } catch (error: any) {
-      setIsLoading(false);
-      toast.error(error.response.data.message);
+      // Show success toast
+      toast.success('Login successful');
+      router.push("/admin/Dashboard");
+      
+    } catch (error) {
+      toast.error('Something went wrong');
+      console.error(error);
     }
   };
 
-  const handleInput = (e: any) => {
-    const { name, value } = e.target;
-    setUserData({
-      ...userData,
-      [name]: value,
-    });
-  };
-
   return (
-    <div className="LoginComponent">
-      <div className="LoginComponent-in">
-        <div className="Login-one">
-          <h1>Chitramela Dashboard</h1>
-        </div>
-        <div className="Login-two">
-          <div className="Login-two-in">
-            <div className="Login-in-one">
-              <input
-                type="text"
-                value={userData.username}
-                onChange={handleInput}
-                name="username"
-                placeholder="Username"
-              />
-            </div>
-            <div className="Login-in-two">
-              <input
-                type="password"
-                value={userData.password}
-                onChange={handleInput}
-                name="password"
-                placeholder="Password"
-              />
-            </div>
-            <div className="Login-in-three">
-              <button onClick={handleLogin}>Login</button>
-            </div>
+    <div className="login-container">
+      <Toaster position="top-center" />
+      <div className="login-box">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-group">
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              required
+            />
           </div>
-        </div>
+          <div className="input-group">
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button type="submit" className="login-button">
+            Login
+          </button>
+        </form>
       </div>
     </div>
   );
-};
-
-export default Login;
+}

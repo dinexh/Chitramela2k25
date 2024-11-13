@@ -2,107 +2,128 @@
 
 import { pool } from "../../../../config/db";
 import { NextRequest, NextResponse } from "next/server";
-import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import bcrypt from "bcrypt";
 
+async function isAuth(username: string, password: string) {
+    try {
+        console.log('Attempting authentication for username:', username);
+        
+        const query = `
+            SELECT username, name, role, active, id
+            FROM users 
+            WHERE username = ? AND password = ? AND role = 'Admin'
+            LIMIT 1
+        `;
+        
+        console.log('Executing query:', query);
+        console.log('Parameters:', [username, password]);
 
-async function isAuth(username: any, password: any) {
+        const [rows] = await pool.query(query, [username, password]);
+        
+        console.log('Query result:', rows);
 
-    const user = await pool.query(
-        `SELECT username, name, role, active, id, password
-     FROM users 
-     WHERE username = ?
-     LIMIT 1`,
-        [username]
-    );
+        const users = rows as any[];
+        
+        if (users.length === 0) {
+            console.log('No user found');
+            return null;
+        }
 
-    const userData = user[0] as any[];
-
-    if (userData.length === 0) {
-        return null;
+        console.log('User found:', users[0]);
+        return users[0];
+    } catch (error) {
+        console.error('Database query error:', error);
+        console.error('Stack trace:', error instanceof Error ? error.stack : 'No stack trace');
+        throw error;
     }
-
-    const isPasswordMatch = await bcrypt.compare(password, userData[0]?.password);
-
-    return isPasswordMatch ? user[0] : null;
 }
 
+export async function POST(req: NextRequest) {
+    try {
+        console.log('Login request received');
+        
+        const body = await req.json();
+        console.log('Request body:', { ...body, password: '[REDACTED]' });
 
-export const POST = async (req: NextRequest) => {
+        const { username, password } = body;
 
-  try {
-    const { username, password } = await req.json();
+        if (!username || !password) {
+            console.log('Missing credentials');
+            return NextResponse.json(
+                { message: "Username and password are required" },
+                { status: 400 }
+            );
+        }
 
-    const user = await isAuth(username, password);
+        console.log('Attempting authentication');
+        const user = await isAuth(username, password);
 
-    if (user === null) {
-      return NextResponse.json({ message: "Invalid credentials" }, { status: 404 });
+        if (!user) {
+            console.log('Authentication failed');
+            return NextResponse.json(
+                { message: "Invalid credentials" },
+                { status: 401 }
+            );
+        }
+
+        if (!user.active) {
+            console.log('Account suspended');
+            return NextResponse.json(
+                { message: "Account suspended" },
+                { status: 403 }
+            );
+        }
+
+        console.log('Setting cookies');
+        const expirationTime = new Date();
+        expirationTime.setTime(expirationTime.getTime() + 15 * 60 * 1000);
+
+        const cookieStore = cookies();
+        cookieStore.set("authenticated", "true", {
+            sameSite: "lax",
+            secure: false,
+            httpOnly: false,
+            expires: expirationTime,
+        });
+
+        cookieStore.set("role", "Admin", {
+            sameSite: "lax",
+            secure: false,
+            httpOnly: false,
+            expires: expirationTime,
+        });
+
+        console.log('Authentication successful');
+        return NextResponse.json({
+            message: "Authenticated",
+            id: user.id,
+            username: user.username,
+            name: user.name,
+            role: user.role,
+        });
+
+    } catch (error: any) {
+        console.error('Login error:', error);
+        console.error('Error details:', {
+            message: error.message,
+            stack: error.stack,
+            code: error.code,
+            errno: error.errno,
+            sqlMessage: error.sqlMessage,
+            sqlState: error.sqlState
+        });
+        
+        return NextResponse.json(
+            { 
+                message: "Internal server error",
+                error: error.message,
+                details: process.env.NODE_ENV === 'development' ? {
+                    code: error.code,
+                    errno: error.errno,
+                    sqlMessage: error.sqlMessage
+                } : undefined
+            },
+            { status: 500 }
+        );
     }
-
-    const Authenticated = user as any[];
-
-    if (Authenticated[0].active === 0) {
-      return NextResponse.json({ message: "Account suspended" }, { status: 404 });
-    }
-
-    // create a JWT token
-    const accessToken = jwt.sign(
-      {
-        username: Authenticated[0].username,
-        name: Authenticated[0].name,
-        role: Authenticated[0].role,
-        id: Authenticated[0].id,
-      },
-      process.env.ACCESS_TOKEN_SECRET as string,
-      { expiresIn: "30sec", algorithm: "HS256" }
-    );
-
-    const refreshToken = jwt.sign(
-      {
-        username: Authenticated[0].username,
-        name: Authenticated[0].name,
-        role: Authenticated[0].role,
-        id: Authenticated[0].id,
-      },
-      process.env.REFRESH_TOKEN_SECRET as string,
-      { expiresIn: "15m", algorithm: "HS256" }
-    );
-
-    // save the refresh token into the database of the users table
-
-    await pool.query(
-      `UPDATE users
-            SET RefreshToken = ?
-            WHERE username = ?`,
-      [refreshToken, Authenticated[0].username]
-    );
-
-    // set the cookie max time to 10 seconds
-    const expirationTime = new Date();
-    expirationTime.setTime(expirationTime.getTime() + 15 * 60 * 1000);
-
-    // set the cookie with refresh token
-    cookies().set("jwt", refreshToken, {
-      sameSite: "lax",
-      secure: false,
-      httpOnly: false,
-      expires: expirationTime,
-    });
-
-
-    return NextResponse.json({
-      message: "Authenticated",
-      id: Authenticated[0].id,
-      username: Authenticated[0].username,
-      name: Authenticated[0].name,
-      role: Authenticated[0].role,
-      accessToken: accessToken,
-      refreshToken: refreshToken,
-    });
-
-  } catch (error: any) {
-    console.log(error);
-    return NextResponse.json({ message: error.message }, { status: 500 });
-  } 
-};
+}
