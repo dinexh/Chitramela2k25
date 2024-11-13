@@ -9,14 +9,9 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   queueLimit: 0,
 });
-
-// Test database connection immediately
 const testConnection = async () => {
   try {
     const connection = await pool.getConnection();
-    console.log('✅ Database connection successful');
-    
-    // Test if we can query the users table
     const [rows] = await connection.query('SELECT COUNT(*) as count FROM users');
     console.log('✅ Users table accessible:', rows);
     

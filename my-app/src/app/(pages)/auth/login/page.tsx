@@ -28,14 +28,12 @@ export default function Login() {
       const data = await res.json();
 
       if (!res.ok) {
-        // Show error toast
         toast.error(data.message || 'Login failed');
         return;
       }
 
-      // Show success toast
       toast.success('Login successful');
-      router.push("/admin/Dashboard");
+      router.push(data.redirectUrl || "/auth/dashboard");
       
     } catch (error) {
       toast.error('Something went wrong');

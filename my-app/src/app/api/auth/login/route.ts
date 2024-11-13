@@ -87,7 +87,8 @@ export async function POST(req: NextRequest) {
                     username: user.username,
                     name: user.name,
                     role: user.role,
-                }
+                },
+                redirectUrl: "/auth/dashboard"
             });
 
         } catch (dbError: any) {
