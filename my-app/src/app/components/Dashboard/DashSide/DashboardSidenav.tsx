@@ -29,16 +29,16 @@ const DashboardSidenav = ({ userName = 'Admin User', userRole = 'Administrator' 
                             <Link href="/auth/dashboard" className="dashboard-nav-link">
                                 <FaHome /> <span>Home</span>
                             </Link>
-                            <Link href="/auth/dashboard/analytics" className="dashboard-nav-link">
+                            <Link href="/auth/dashboard/Options/analystics" className="dashboard-nav-link">
                                 <FaChartBar /> <span>Analytics</span>
                             </Link>
-                            <Link href="/auth/dashboard/payments" className="dashboard-nav-link">
+                            <Link href="/auth/dashboard/Options/payment" className="dashboard-nav-link">
                                 <FaMoneyBill /> <span>Payments</span>
                             </Link>
-                            <Link href="/auth/dashboard/users" className="dashboard-nav-link">
+                            <Link href="/auth/dashboard/Options/users" className="dashboard-nav-link">
                                 <FaUserCircle /> <span>User Management</span>
                             </Link>
-                            <Link href="/auth/dashboard/settings" className="dashboard-nav-link">
+                            <Link href="/auth/dashboard/Options/settings" className="dashboard-nav-link">
                                 <FaCog /> <span>Settings</span>
                             </Link>
                         </div>

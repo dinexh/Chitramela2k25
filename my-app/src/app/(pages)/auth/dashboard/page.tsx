@@ -10,10 +10,7 @@ const Dashboard = () => {
             <DashboardNav />
             <div className="dashboard-content">
                 <DashboardSidenav />
-                <main className="dashboard-main">
-                    <h1>Welcome to Admin Portal</h1>
-                    {/* Add your dashboard content here */}
-                </main>
+                <h1>Welcome to Admin Portal</h1>
             </div>
             <DashboardFooter />
         </div>
