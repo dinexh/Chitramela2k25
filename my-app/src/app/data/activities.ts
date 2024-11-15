@@ -2,50 +2,44 @@ export interface Activity {
   id: number;
   title: string;
   image: string;
-  description: string;
+  description?: string;
   date: string;
   time: string;
   venue: string;
   fee: string;
-  category: string;
-  rulesId: string; // Link to the corresponding rules
+  rulesId: string;
 }
 
 export const activities: Activity[] = [
   {
     id: 1,
-    title: 'Technical Events',
+    title: 'Cine Quiz :',
     image: 'https://firebasestorage.googleapis.com/v0/b/flim-382d5.appspot.com/o/Activities%2FCine%20Quiz.png?alt=media&token=c076d187-3702-470c-af37-2b3ac37ca8a6',
-    description: 'The Battle of the Brains Into Competition',
     date: 'January 10, 2025',
     time: '10:00 AM - 4:00 PM',
     venue: 'Main Auditorium',
     fee: '$20',
-    category: 'Technical',
     rulesId: 'cine-quiz', // Link to the Cine Quiz rules
   },
   {
     id: 2,
-    title: 'Non Technical Events',
+    title: 'Movie Poster Design Contest ',
     image: 'https://firebasestorage.googleapis.com/v0/b/flim-382d5.appspot.com/o/Activities%2FMovie%20Poster%20Making.png?alt=media&token=405679cd-8c74-4bf5-aaa6-a90e64d106a5',
-    description: 'Enhance your Creativity.',
     date: 'January 11, 2025',
     time: '11:00 AM - 5:00 PM',
     venue: 'Exhibition Hall',
     fee: '$15',
-    category: 'Non-Technical',
     rulesId: 'movie-poster-design', // Link to Movie Poster Design rules
   },
   {
     id: 3,
-    title: 'Literary Events',
+    title: 'Photography Contest - Mobile Photograph:',
     image: 'https://firebasestorage.googleapis.com/v0/b/flim-382d5.appspot.com/o/Activities%2FPhotography%20Contest.png?alt=media&token=da8d10a5-2680-42cb-9a96-47f4f611d59d',
     description: 'Stories worth sharing. Stories worth hearing.',
     date: 'January 12, 2025',
     time: '9:00 AM - 3:00 PM',
     venue: 'Library Conference Room',
     fee: '$10',
-    category: 'Literary',
     rulesId: 'photography-contest', // Link to Photography Contest rules
   },
   {
@@ -57,7 +51,6 @@ export const activities: Activity[] = [
     time: 'Various Times',
     venue: 'Multiple Locations',
     fee: '$5 per event',
-    category: 'Spot',
     rulesId: 'reel-making-contest', // Link to Reel Making Contest rules
   },
   {
@@ -69,7 +62,6 @@ export const activities: Activity[] = [
     time: '9:00 AM - 6:00 PM',
     venue: 'Art Gallery',
     fee: '$12',
-    category: 'Art',
     rulesId: 'short-film-contest', // Link to Short Film Contest rules
   }
 ];

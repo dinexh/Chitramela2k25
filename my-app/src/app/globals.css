@@ -259,7 +259,32 @@ html {
   margin-bottom: 1rem;
   color: var(--color-primary);
 }
+.home-component-counter {
+  /* Add these properties to the existing styles */
+  background-image: url('');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
 
+/* Add an overlay to ensure text remains readable */
+.home-component-counter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Adjust opacity as needed */
+  z-index: 1;
+}
+
+/* Ensure content stays above the overlay */
+.home-component-counter > * {
+  position: relative;
+  z-index: 2;
+}
 /* ---------------------------------------- gallery section ---------------------------------------- */
 .home-component-gallery {
   width: 100%;
@@ -606,6 +631,7 @@ html {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   font-weight: 600;
+  /* background-color: red; */
 }
 
 .about-info-content p {
