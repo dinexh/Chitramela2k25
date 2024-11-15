@@ -92,7 +92,7 @@ export default function Navigation() {
           </Link>
           <Link href="/team" className="navigation-link">Team</Link>
           <Link href="/Rules" className="navigation-link">Rules</Link>
-          <Link href="/register" className="navigation-link register">Register</Link>
+          <Link href="/register" className="navigation-link-register">Register</Link>
         </div>
       </div>
     </nav>

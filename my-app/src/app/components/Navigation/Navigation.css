@@ -13,21 +13,6 @@
   align-items: center;
   width: 50%;
 }
-
-/* Add responsive width */
-@media (max-width: 1024px) {
-  .navigation {
-    width: 90%;
-  }
-}
-
-@media (max-width: 768px) {
-  .navigation {
-    width: 95%;
-    top: 0.5rem;
-  }
-}
-
 .navigation.visible {
   transform: translate(-50%, 0);
 }
@@ -61,7 +46,14 @@
 .navigation-link:hover {
   color: #007bff;
 }
-
+.navigation-link-register{
+  background-color: var(--color-scrollbar-hover);
+  padding: .5rem 1em;
+  border-radius: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
 .home-component-nav {
   position: fixed;
   top: 0;
@@ -76,7 +68,7 @@
   transform: translateY(0);
 }
 
-/* Add hamburger menu styles */
+/* ------------------------------------Mobile Nav------------------------------------ */
 .hamburger {
   display: none;
   flex-direction: column;

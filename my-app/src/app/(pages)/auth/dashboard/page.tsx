@@ -10,7 +10,6 @@ const Dashboard = () => {
             <DashboardNav />
             <div className="dashboard-content">
                 <DashboardSidenav />
-                <h1>Welcome to Admin Portal</h1>
             </div>
             <DashboardFooter />
         </div>
