@@ -9,7 +9,7 @@ const DashboardFooter = () => {
                         <p>© 2024 All rights reserved by Chitramela </p>
                     </div>
                     <div className="footer-container-in-two">
-                        <p> Designed and Developed by <a href="https://www.linkedin.com/in/kunal-kumar-yadav-000000000000000000/">Dinesh Korukonda</a> & <a href="https://www.linkedin.com/in/g-pavan-karthik-000000000000000000/">G Pavan Karthik</a>.</p>
+                        <p> Designed and Developed by <a href="https://in.linkedin.com/in/dinesh-korukonda-513855271">Dinesh Korukonda</a> & <a href="https://in.linkedin.com/in/pavankarthikgaraga">G Pavan Karthik</a>.</p>
                     </div>
                 </div>
             </div>

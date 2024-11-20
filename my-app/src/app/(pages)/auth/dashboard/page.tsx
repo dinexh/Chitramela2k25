@@ -7,11 +7,22 @@ import DashboardFooter from '@/app/components/Dashboard/DashFooter/DashboardFoot
 const Dashboard = () => {
     return ( 
         <div className='dashboard-container'>
-            <DashboardNav />
-            <div className="dashboard-content">
-                <DashboardSidenav />
+            <div className="dashboard-container-in">
+                <div className="dashboard-container-nav">
+                    <DashboardNav/>
+                </div>
+                <div className="dashboard-container-main">
+                    <div className="dashboard-container-main-one">
+                        <DashboardSidenav/>
+                    </div>
+                    <div className="dashbaord-container-main-two">
+
+                    </div>
+                </div>
+                <div className="dashboard-container-footer">
+                    <DashboardFooter />
+                </div>
             </div>
-            <DashboardFooter />
         </div>
     );
 }

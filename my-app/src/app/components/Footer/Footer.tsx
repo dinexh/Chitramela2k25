@@ -11,10 +11,10 @@ const Footer = () => {
         <div className="footer-in-one">
           <p>Designed and Developed by</p> 
           <p>
-            <Link href="https://www.amazon.in">Dinesh Korukonda</Link> & <Link href="https://www.amazon.in">Pavan Karthik Garaga</Link> of 
+            <Link href="https://in.linkedin.com/in/dinesh-korukonda-513855271">Dinesh Korukonda</Link> & <Link href="https://in.linkedin.com/in/pavankarthikgaraga">Pavan Karthik Garaga</Link> of 
           </p>
           <p>
-            <Link href="https://www.amazon.in"><span>ZeroOne Code Club</span></Link>
+            <Link href="https://in.linkedin.com/company/zeroonecodeclub"><span>ZeroOne Code Club</span></Link>
           </p>
           <p>&copy; 2024 Chitramela. All rights reserved.</p>
         </div>
