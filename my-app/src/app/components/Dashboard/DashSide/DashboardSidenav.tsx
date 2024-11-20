@@ -1,7 +1,6 @@
 import './DashboardSidenav.css';
 import Link from 'next/link';
 import { 
-    FaHome, 
     FaChartBar, 
     FaUserCircle, 
     FaCog, 
@@ -26,10 +25,7 @@ const DashboardSidenav = ({ userName = 'Admin User', userRole = 'Administrator' 
                 <div className="dashboard-sidebnav-menu">
                     <div className="dashboard-sidebav-menu-in">
                         <div className="dashboard-nav-links">
-                            <Link href="/auth/dashboard" className="dashboard-nav-link">
-                                <FaHome /> <span>Home</span>
-                            </Link>
-                            <Link href="/auth/dashboard/Options/analystics" className="dashboard-nav-link">
+                            <Link href="/" className="dashboard-nav-link">
                                 <FaChartBar /> <span>Analytics</span>
                             </Link>
                             <Link href="/auth/dashboard/Options/payment" className="dashboard-nav-link">
