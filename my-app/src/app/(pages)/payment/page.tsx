@@ -3,7 +3,7 @@ import './payment.css';
 import '../register/register.css';
 import { useState } from 'react';
 import Image from 'next/image';
-import Footer from '@/app/components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 
 export default function Payment() {
   const [paymentDetails, setPaymentDetails] = useState({

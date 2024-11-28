@@ -3,7 +3,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
 import './confirm.css';
 import '../register/register.css';
-import Footer from '@/app/components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 
 interface FormDataType {
     name: string;

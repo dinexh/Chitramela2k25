@@ -3,7 +3,7 @@ import './Team.css';
 import React from 'react';
 import Pic from "../../assets/TeamPerson.png";
 import { FaInstagram, FaTelegram } from 'react-icons/fa';
-import Footer from '@/app/components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import Image from 'next/image';
 import { teamMembers } from '@/app/data/team';
 import Link from 'next/link';

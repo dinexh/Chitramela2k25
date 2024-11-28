@@ -1,6 +1,6 @@
 "use client";
 import './register.css';
-import Footer from '@/app/components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import { useRouter } from 'next/navigation';
 import { useState, FormEvent } from 'react';
 

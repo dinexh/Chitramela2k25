@@ -3,7 +3,7 @@ import "./Media.css"
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Navigation from './components/Navigation/Navigation';
-import Footer from "./components/footer/footer";
+import Footer from "./components/Footer/Footer";
 import ModalA from './components/ModalA/ModalA';
 import ModalB from "./components/ModalB/ModalB";
 // data imports

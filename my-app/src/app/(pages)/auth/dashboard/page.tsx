@@ -1,8 +1,8 @@
 "use client";
 import './dashboard.css'
-import DashboardNav from '@/app/components/Dashboard/DashNav/DashboardNav';
-import DashboardSidenav from '@/app/components/Dashboard/DashSide/DashboardSidenav';
-import DashboardFooter from '@/app/components/Dashboard/DashFooter/DashboardFooter';
+import DashboardNav from '../dashboard/components/DashNav/DashboardNav';
+import DashboardSidenav from '../dashboard/components/DashSide/DashboardSidenav';
+import DashboardFooter from '../dashboard/components/DashFooter/DashboardFooter';
 
 const Dashboard = () => {
     return ( 

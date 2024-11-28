@@ -3,10 +3,10 @@ import Image from "next/image";
 import React from 'react';
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaYoutube, FaUser } from 'react-icons/fa';
-import Logo from "../../Assets/newlogo.png";
-import SACLogo from "../../Assets/sac_logo.png";
-import { useRouter } from 'next/navigation';
-import { icons } from 'lucide-react';
+// import Logo from "../../assets/newlogo.png";
+import logo from '../../assets/newlogo.png';
+import SACLogo from "../../assets/sac_logo.png";
+import { useRouter } from 'next/router';
 const Footer = () => {
     const router = useRouter();
     const socialLinks = [
@@ -39,7 +39,7 @@ const Footer = () => {
                 <div className="footer-component-in-main">
                     <div className="footer-component-main-in">
                         <div className="footer-component-main-in-one">
-                            <Image src={Logo} alt="Chitramela logo" className="Logo" />
+                            <Image src={logo} alt="Chitramela logo" className="Logo" />
                             <Image src={SACLogo} alt="Student Activity Center Logo" className="Logo" />
                         </div>
                         <div className="footer-component-main-in-two">
@@ -65,9 +65,6 @@ const Footer = () => {
                 <div className="footer-in-component-copyright">
                     <div className="footer-component-copyright-one">
                         <p>Designed and Developed by <Link href="https://in.linkedin.com/in/dinesh-korukonda-513855271">Dinesh Korukonda</Link> & <Link href="https://in.linkedin.com/in/pavankarthikgaraga">Pavan Karthik Garaga</Link>
-                        </p>
-                        <p>
-                        {/* <Link href="https://in.linkedin.com/company/zeroonecodeclub"><span>ZeroOne Code Club</span></Link> */}
                         </p>
                     </div>
                     <div className="footer-component-copyright-two">
