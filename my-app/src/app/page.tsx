@@ -3,10 +3,11 @@ import "./Media.css"
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Navigation from './components/Navigation/Navigation';
-import Footer from './components/Footer/Footer';
+import Footer from "./components/footer/footer";
 import ModalA from './components/ModalA/ModalA';
 import ModalB from "./components/ModalB/ModalB";
 // data imports
+import { teamMembers } from '@/app/data/team';
 import { activities, Activity } from '@/app/data/activities';
 import { galleryImages } from '@/app/data/gallery';
 import { faqs, FAQ } from '@/app/data/faqs';
@@ -24,6 +25,7 @@ export default function Home() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [selectedAboutInfo, setSelectedAboutInfo] = useState<number | null>(null);
   const [showNav, setShowNav] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   // custom hooks
   const counterRef = useScrollAnimation();
   const aboutRef = useScrollAnimation();
@@ -51,6 +53,18 @@ export default function Home() {
 
     return () => clearInterval(interval)
   }, [])
+  useEffect(() => {
+    const handleScroll = () => {
+        const section = document.querySelector(".home-component-team-content");
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+            setIsVisible(true);
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   useEffect(() => {
     const galleryScroll = document.querySelector('.home-component-gallery-content') as HTMLElement;
@@ -92,6 +106,9 @@ export default function Home() {
       });
     }
   };
+  const GoToTeam = () => {  
+    router.push('/team');
+  }
   return (
     <div className="home-component">
       <div className={`home-component-nav ${showNav ? 'visible' : ''}`}>
@@ -199,6 +216,30 @@ export default function Home() {
               </div>
             </div>
           </div>
+          {/* ----------------------------------------Team---------------------------------------------- */}
+          <div className="home-component-team">
+            <div className="home-component-team-in">
+                  <div className="home-component-team-in-heading">
+                    <div className="home-component-team-in-heading-one">
+                    <h1>Meet the Expert Team behind Chitramela</h1>
+                    <p>Our team of experts is dedicated to bringing you the best experience at Chitramela. Meet the talented individuals who make it all happen.</p>
+                    </div>
+                    <div className="home-component-team-in-heading-two">
+                      <p onClick={GoToTeam}>View More</p>
+                    </div>
+                  </div>
+                  <div className="home-component-team-content">
+                  {isVisible &&
+                        teamMembers.map((member) => (
+                            <div key={member.id} className="team-card">
+                                <img src={member.image} alt={member.name} />
+                                <h3>{member.name}</h3>
+                                <p>{member.designation}</p>
+                            </div>
+                        ))}
+                  </div>
+            </div>
+          </div>
 
           {/*---------------------------------------- faq section ----------------------------------------*/}
           <div className="home-component-faq scroll-hidden" ref={faqRef} id="faq">
@@ -235,7 +276,6 @@ export default function Home() {
      {selectedActivity && (
       <ModalA onClose={() => setSelectedActivity(null)}>
         <div className="home-component-modalA-content">
-          {/* Content A: Image and Details side by side */}
           <div className="home-component-modalA-contentA">
             <div className="home-component-modalA-image">
               <Image

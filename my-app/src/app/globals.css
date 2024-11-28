@@ -370,6 +370,13 @@ html {
 .home-component-gallery-image:hover {
   transform: scale(1.05);
 }
+/* ------------------------------------Team Section-------------------------------------------- */
+home-component-team {
+  border: 2px solid white;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
 
 /* ---------------------------------------- FAQ section ---------------------------------------- */
 .home-component-faq {

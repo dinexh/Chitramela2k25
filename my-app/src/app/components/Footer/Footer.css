@@ -1,198 +1,123 @@
-.footer {
-  background-color:black;
-  color: white;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-top:1px solid grey;
-}
-.footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-.footer-in{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.footer-in-top{
-  padding: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border-bottom: 1px solid grey;
-}
-.footer-in-top-in-one{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 25%;
-}
-.footer-in-top-in-two{
-  width: 8%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.footer-in-top-in-two button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  border: none;
-  background-color: yellow;
-  color: black;
-}
-.footer-in-top-in-two button:hover{
-  background-color: gold;
-}
-.footer-in-main{
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.footer-in-main-in{
-  width: 98%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.footer-in-main-in-one{
-  width: 25%;
-  text-align: center;
-}
-.footer-in-main-in-one p{
-  margin: 0.5rem 0;
-}
-.footer-in-main-in-one a{
-  color: white;
-  text-decoration: none;
-}
-.footer-in-main-in-one a:hover{
-  color: gold;
-}
-.footer-in-main-in-one a:hover{
-  color: gold;
-}
-.footer-main-in-two {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-.footer-main-in-two img {
-  width: 150px;
-  height: auto;
-  object-fit: contain;
-}
-.footer-main-in-three {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 1rem;
-}
-.footer-main-in-three p {
-  margin-bottom: 0.5rem;
-}
-.footer-main-in-three svg {
-  margin: 0 0.5rem;
-  color: white;
-  transition: transform 0.3s ease;
-}
-.footer-main-in-three svg:hover {
-  transform: scale(1.2);
-}
-.footer-main-in-two {
-  width: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-main-in-two img {
-  height: 80px;
-  width: 65%;
-  object-fit: contain;
-  /* filter: drop-shadow(0 0 10px rgba(0, 195, 255, 0.437)); */
-  transition: all 0.3s ease;
-}
-
-.footer-main-in-two img:hover {
-  transform: scale(1.05);
-  filter: drop-shadow(0 0 15px rgba(0, 76, 255, 0.3));
-}
-.footer-main-in-three {
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-main-in-three-in-one {
-  /* width: 50%; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-main-in-three-in-two {
-  width: 100%;
-  text-align: center;
-}
-
-.footer-main-in-three-in-two h2 {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #00eeff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.footer-main-in-three-in-two a {
-  font-size: 1rem;
-  font-weight: 400;
-  text-decoration: none;
-  color: #FFF;
-  transition: all 0.3s ease;
-}
-
-.footer-main-in-three-in-two a:hover {
-  color: #00c8ff;
-}
-@media (max-width: 768px) {
-  .footer-in-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .footer-in-main {
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-in-main-in {
-    flex-direction: column;
-    align-items: center;
-  }
-  .footer-in-main-in-one {
+.footer-component{
+    /* background-color: red; */
     width: 100%;
-  }
-  .footer-main-in-two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+.footer-component-in{
+    width: 100%;
+    display: flex;
     flex-direction: column;
-  }
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid grey;
+}
+.footer-component-in-top{
+    border-bottom: 1px solid grey;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-component-in-top-one{
+    width: 25%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-component-in-top-two{
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-component-in-main{
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-component-main-in{
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-component-main-in-one{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.Logo{
+    height: 15vh;
+}
+.footer-component-main-in-two{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer-component-main-in-two p{
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.footer-component-main-in-two-icons{
+    margin-top: 0.5rem;
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-component-main-in-two-icons a{
+    background-color: black;
+    border: 2px solid gold;
+    border-radius: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gold;
+}
+.footer-component-main-in-two-icons a:hover{
+    transform: translateY(-0.5rem);
+    transition: 0.5s;
+}
+.footer-component-main-in-two-number{
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer-component-main-in-two-number a{
+    font-size: 1rem;
+    font-weight: 400;
+}
+.footer-in-component-copyright{
+    border-top: 2px solid grey;
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-in-component-copyright p{
+    font-size: 1rem;
+    font-weight: 400;
+}
+.footer-in-component-copyright a{
+    font-size: 1rem;
+    font-weight: 400;
+    color: gold;
+}
+.footer-in-component-copyright span{
+    color: gold;
 }
