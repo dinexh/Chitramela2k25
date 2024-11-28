@@ -71,7 +71,7 @@
 }
 .footer-component-main-in-two-icons{
     margin-top: 0.5rem;
-    width: 45%;
+    width: 60%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -100,6 +100,8 @@
 .footer-component-main-in-two-number a{
     font-size: 1rem;
     font-weight: 400;
+    text-decoration: none;
+    color: white;
 }
 .footer-in-component-copyright{
     border-top: 2px solid grey;
@@ -117,7 +119,14 @@
     font-size: 1rem;
     font-weight: 400;
     color: gold;
+    text-decoration: none;
 }
 .footer-in-component-copyright span{
     color: gold;
+}
+.Login{
+    padding: 0.2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }

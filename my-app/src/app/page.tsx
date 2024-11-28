@@ -53,18 +53,18 @@ export default function Home() {
 
     return () => clearInterval(interval)
   }, [])
-  useEffect(() => {
-    const handleScroll = () => {
-        const section = document.querySelector(".home-component-team-content");
-        const rect = section.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom >= 0) {
-            setIsVisible(true);
-        }
-    };
+//   useEffect(() => {
+//     const handleScroll = () => {
+//         const section = document.querySelector(".home-component-team-content");
+//         const rect = section.getBoundingClientRect();
+//         if (rect.top < window.innerHeight && rect.bottom >= 0) {
+//             setIsVisible(true);
+//         }
+//     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+// }, []);
 
   useEffect(() => {
     const galleryScroll = document.querySelector('.home-component-gallery-content') as HTMLElement;
@@ -202,7 +202,7 @@ export default function Home() {
             <div className="home-component-gallery-scroll">
               <div className="home-component-gallery-content">
                 {galleryImages.map((image: string, index: number) => (
-                  <div key={index} className="home-component-gallery-image-wrapper">
+                    <div key={index} className="home-component-gallery-image-wrapper">
                     <Image 
                       src={image} 
                       alt={`Gallery image ${index + 1}`} 
@@ -211,13 +211,13 @@ export default function Home() {
                       height={400}
                       layout="responsive"
                     />
-                  </div>
+                    </div>
                 ))}
               </div>
             </div>
           </div>
           {/* ----------------------------------------Team---------------------------------------------- */}
-          <div className="home-component-team">
+          {/* <div className="home-component-team">
             <div className="home-component-team-in">
                   <div className="home-component-team-in-heading">
                     <div className="home-component-team-in-heading-one">
@@ -239,7 +239,7 @@ export default function Home() {
                         ))}
                   </div>
             </div>
-          </div>
+          </div> */}
 
           {/*---------------------------------------- faq section ----------------------------------------*/}
           <div className="home-component-faq scroll-hidden" ref={faqRef} id="faq">

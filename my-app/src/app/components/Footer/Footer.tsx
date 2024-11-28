@@ -2,16 +2,18 @@ import './footer.css';
 import Image from "next/image";
 import React from 'react';
 import Link from "next/link";
-import { FaFacebookF, FaInstagram, FaYoutube,  } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaYoutube, FaUser } from 'react-icons/fa';
 import Logo from "../../Assets/newlogo.png";
 import SACLogo from "../../Assets/sac_logo.png";
 import { useRouter } from 'next/navigation';
+import { icons } from 'lucide-react';
 const Footer = () => {
     const router = useRouter();
     const socialLinks = [
       { href: '#', icon: <FaFacebookF />, label: 'Facebook' },
       { href: '#', icon: <FaInstagram />, label: 'Instagram' },
       { href: '#', icon: <FaYoutube />, label: 'YouTube' },
+      { href: '#' , icon: <FaUser/> , label: 'user'}
     ];
   
     const GoToLogin = () => {
@@ -28,7 +30,10 @@ const Footer = () => {
                     </div>
                     <div className="footer-component-in-top-two">
                         <p>Report Bugs</p>
-                        <p onClick={GoToLogin}>Login</p>
+                        <p className='Login' onClick={GoToLogin}>
+                            <FaUser/>
+                            Login
+                            </p>
                     </div>
                 </div>
                 <div className="footer-component-in-main">
